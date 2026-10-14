@@ -1,0 +1,41 @@
+/* EasyMD — Elevation, borders & motion tokens
+   Soft shadows on cream. Hover lifts. Motion 200-400ms ease-out, discreet. */
+
+:root {
+  /* Shadows — soft, low-saturation navy tint */
+  --shadow-xs:  0 1px 2px rgba(16, 35, 54, 0.05);
+  --shadow-sm:  0 1px 3px rgba(16, 35, 54, 0.07), 0 1px 2px rgba(16, 35, 54, 0.04);
+  --shadow-md:  0 4px 12px rgba(16, 35, 54, 0.08), 0 2px 4px rgba(16, 35, 54, 0.05);
+  --shadow-lg:  0 12px 28px rgba(16, 35, 54, 0.10), 0 4px 8px rgba(16, 35, 54, 0.05);
+  --shadow-xl:  0 24px 48px rgba(16, 35, 54, 0.12);
+  --shadow-focus: 0 0 0 3px rgba(14, 165, 233, 0.35); /* brand-blue focus ring */
+
+  /* Border widths */
+  --border-width: 1px;
+
+  /* Motion */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);   /* @kind other */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);  /* @kind other */
+  --duration-fast:   150ms;  /* @kind other */
+  --duration-base:   250ms;  /* @kind other */
+  --duration-slow:   400ms;  /* @kind other */
+
+  /* Interaction deltas */
+  --hover-lift: translateY(-2px);  /* @kind other */
+  --hover-scale: scale(1.02);      /* @kind other */
+  --press-scale: scale(0.98);      /* @kind other */
+}
+
+/* Brand keyframes (discreet) */
+@keyframes emd-fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes emd-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+@keyframes emd-pulse-soft {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.6; }
+}

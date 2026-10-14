@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="design_doc_mode" content="canvas">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/tokens/base.css">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static@0.460.0/font/lucide.css">
+  <script src="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--gray-100); color: var(--foreground); }
+    a { color: var(--cta-blue); } a:hover { color: var(--cta-blue-hover); }
+    button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--cta-blue); outline-offset: 2px; }
+    @keyframes emdspin { to { transform: rotate(360deg); } }
+  </style>
+</helmet>
+
+<div style="padding: 40px 24px 80px; display: flex; flex-direction: column; gap: 48px; max-width: 1320px; margin: 0 auto;">
+
+  <header style="display: flex; flex-direction: column; gap: 14px; max-width: 860px;">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <img src="assets/easymd-icon.png" alt="EasyMD" style="width: 40px; height: 40px;">
+      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-foreground);">Rediseño UI/UX · App de pacientes · Oct 2026</span>
+    </div>
+    <h1 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 42px; line-height: 1.1; letter-spacing: -0.02em; text-wrap: pretty;">Las mismas funciones, en menos decisiones por pantalla</h1>
+    <p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--muted-foreground); text-wrap: pretty;">Basado en las 12 capturas de la app actual. Toda función existente conserva su flujo y tiene un lugar en la nueva navegación. Se agrega Expediente para ver ficha médica, historial clínico, recetas y resultados.</p>
+  </header>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
+
+    <div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 40px;">
+
+      <section style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--cta-blue);">01 · Diagnóstico por pantalla</span>
+          <h2 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 26px; letter-spacing: -0.02em;">Qué cambia en cada captura</h2>
+        </div>
+        <div style="display: flex; gap: 10px; padding: 14px 16px; border-radius: 16px; background: var(--danger-bg);">
+          <i class="icon-triangle-alert" style="font-size: 18px; color: var(--danger-700, #a33a2a); margin-top: 2px;"></i>
+          <span style="font-size: 14px; line-height: 1.55;"><strong>Problemas globales.</strong> Los botones menta con texto blanco tienen un contraste aproximado de 2:1 (AA pide 4.5:1). La barra inferior dedica dos pestañas a Favoritos y Mensajes, y no hay Expediente. Los precios aparecen en C$ aunque el plan se cobra en dólares. Las ilustraciones 3D mezclan estilos y saturación.</span>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-radius: 20px; overflow: hidden;">
+          <sc-for list="{{ diag }}" as="d" hint-placeholder-count="12">
+            <div style="display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 12px; padding: 14px 16px; border-top: {{ d.border }};">
+              <span style="font-family: var(--font-heading); font-weight: 700; font-size: 13px; color: var(--muted-foreground); padding-top: 2px;">{{ d.n }}</span>
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <button onClick="{{ d.open }}" style="align-self: flex-start; display: flex; align-items: center; gap: 6px; padding: 0; border: none; background: none; cursor: pointer; font-family: var(--font-heading); font-weight: 700; font-size: 15px; color: var(--foreground);">{{ d.screen }}<i class="icon-arrow-up-right" style="font-size: 14px; color: var(--cta-blue);"></i></button>
+                <span style="font-size: 13px; line-height: 1.5; color: var(--muted-foreground);">{{ d.prob }}</span>
+                <span style="display: flex; gap: 6px; font-size: 13px; line-height: 1.5;"><i class="icon-arrow-right" style="font-size: 14px; color: var(--mint-600); margin-top: 2px;"></i>{{ d.fix }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <span style="font-size: 12px; color: var(--muted-foreground);">Toca el nombre de una pantalla para abrir su versión rediseñada en el prototipo.</span>
+      </section>
+
+      <section style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--cta-blue);">02 · Plan priorizado</span>
+          <h2 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 26px; letter-spacing: -0.02em;">Orden de implementación</h2>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <sc-for list="{{ plan }}" as="p" hint-placeholder-count="6">
+            <div style="background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 14px 16px; display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 12px;">
+              <span style="width: 28px; height: 28px; border-radius: 50%; background: var(--color-primary); color: var(--white); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: 13px;">{{ p.n }}</span>
+              <span style="display: flex; flex-direction: column; gap: 2px;">
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">{{ p.t }}</span>
+                <span style="font-size: 13px; line-height: 1.5; color: var(--muted-foreground);">{{ p.d }}</span>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <section style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--cta-blue);">03 · Verificación funcional</span>
+          <h2 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 26px; letter-spacing: -0.02em;">Cada función actual, en su nuevo lugar</h2>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-radius: 20px; overflow: hidden;">
+          <sc-for list="{{ mapa }}" as="m" hint-placeholder-count="16">
+            <div style="display: grid; grid-template-columns: minmax(0, 1fr) 20px minmax(0, 1fr) 24px; gap: 10px; align-items: center; padding: 11px 16px; border-top: {{ m.border }}; font-size: 13px; line-height: 1.45;">
+              <span style="color: var(--muted-foreground);">{{ m.antes }}</span>
+              <i class="icon-arrow-right" style="font-size: 14px; color: var(--subtle-foreground);"></i>
+              <span style="font-weight: 500;">{{ m.ahora }}</span>
+              <i class="icon-{{ m.icon }}" style="font-size: 16px; color: {{ m.color }};"></i>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">Checklist</span>
+          <sc-for list="{{ checklist }}" as="c" hint-placeholder-count="8">
+            <span style="display: flex; gap: 8px; font-size: 14px; line-height: 1.5;"><i class="icon-circle-check" style="font-size: 16px; color: var(--mint-600); margin-top: 2px;"></i>{{ c }}</span>
+          </sc-for>
+        </div>
+        <div style="display: flex; gap: 10px; padding: 14px 16px; border-radius: 16px; background: var(--warning-bg);">
+          <i class="icon-info" style="font-size: 18px; color: var(--warning-700, #92560a); margin-top: 2px;"></i>
+          <span style="font-size: 13px; line-height: 1.55;">La página de planes carga su contenido de forma dinámica y no se pudo leer. El prototipo usa Plan Plus (US$14.95/mes, de la página de inicio) y solo los beneficios confirmados: médico 24/7 con espera menor a 5 min, psicología ilimitada y descuentos en farmacia, laboratorio, imagen y odontología. Médicos, precios de servicios y datos del paciente son de ejemplo.</span>
+        </div>
+      </section>
+    </div>
+
+    <div style="flex: 0 0 auto; position: sticky; top: 24px; display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 100%;">
+      <div style="display: flex; gap: 4px; padding: 4px; border-radius: 12px; background: var(--white); border: 1px solid var(--border);">
+        <sc-for list="{{ devices }}" as="dv" hint-placeholder-count="2">
+          <button onClick="{{ dv.onClick }}" style="height: 36px; padding: 0 14px; border-radius: 9px; border: none; cursor: pointer; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px; background: {{ dv.bg }}; color: {{ dv.fg }};"><i class="icon-{{ dv.icon }}" style="font-size: 15px;"></i>{{ dv.label }}</button>
+        </sc-for>
+      </div>
+
+      <div style="position: relative; width: {{ frameW }}; height: {{ frameH }}; max-width: calc(100vw - 48px); border-radius: 44px; overflow: hidden; border: 10px solid var(--navy-900); box-shadow: var(--shadow-xl); background: var(--app-bg); display: flex; flex-direction: column; box-sizing: content-box;">
+        <div style="height: 44px; flex-shrink: 0; padding: 0 26px; display: flex; align-items: center; justify-content: space-between; color: var(--foreground);">
+          <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">8:12</span>
+          <span style="display: flex; gap: 6px; font-size: 16px;"><i class="icon-signal"></i><i class="icon-wifi"></i><i class="icon-battery-full"></i></span>
+        </div>
+
+        <div ref="{{ scrollRef }}" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column;">
+
+          <sc-if value="{{ hasBack }}">
+            <div style="display: flex; align-items: center; gap: 12px; padding: 4px 16px 12px;">
+              <button aria-label="Regresar" onClick="{{ back }}" style="width: 44px; height: 44px; flex-shrink: 0; border-radius: 50%; border: 1px solid var(--border); background: var(--white); cursor: pointer; font-size: 20px; color: var(--foreground); display: flex; align-items: center; justify-content: center;"><i class="icon-arrow-left"></i></button>
+              <span style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 18px;">{{ subTitle }}</span>
+                <span style="font-size: 13px; color: var(--muted-foreground);">{{ subCaption }}</span>
+              </span>
+              <sc-if value="{{ showCartTop }}">
+                <button aria-label="Carrito" onClick="{{ goCarrito }}" style="position: relative; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: var(--white); cursor: pointer; font-size: 19px; color: var(--foreground); display: flex; align-items: center; justify-content: center;"><i class="icon-shopping-cart"></i><sc-if value="{{ hasCart }}"><span style="position: absolute; top: -2px; right: -2px; min-width: 18px; height: 18px; border-radius: 999px; background: var(--color-primary); color: var(--white); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center;">{{ cartCount }}</span></sc-if></button>
+              </sc-if>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isInicio }}" hint-placeholder-val="{{ true }}">
+            <div style="padding: 4px 16px 24px; display: flex; flex-direction: column; gap: 18px;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <button aria-label="Mi cuenta" onClick="{{ goCuenta }}" style="width: 44px; height: 44px; border-radius: 50%; border: none; background: var(--color-primary); color: var(--white); font-family: var(--font-heading); font-weight: 700; font-size: 16px; cursor: pointer;">N</button>
+                <span style="flex: 1; display: flex; flex-direction: column; gap: 3px;">
+                  <span style="font-family: var(--font-heading); font-weight: 700; font-size: 20px;">Hola, Nicolás</span>
+                  <span style="align-self: flex-start; display: flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: var(--mint-50); color: var(--mint-700);"><span style="width: 6px; height: 6px; border-radius: 50%; background: var(--mint-500);"></span>Plan Plus activo</span>
+                </span>
+                <button aria-label="Mensajes" onClick="{{ goMensajes }}" style="position: relative; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: var(--white); cursor: pointer; font-size: 19px; color: var(--foreground); display: flex; align-items: center; justify-content: center;"><i class="icon-message-circle"></i><span style="position: absolute; top: 8px; right: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--cta-blue); border: 2px solid var(--white);"></span></button>
+                <button aria-label="Carrito" onClick="{{ goCarrito }}" style="position: relative; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: var(--white); cursor: pointer; font-size: 19px; color: var(--foreground); display: flex; align-items: center; justify-content: center;"><i class="icon-shopping-cart"></i><sc-if value="{{ hasCart }}"><span style="position: absolute; top: -2px; right: -2px; min-width: 18px; height: 18px; border-radius: 999px; background: var(--color-primary); color: var(--white); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center;">{{ cartCount }}</span></sc-if></button>
+              </div>
+              <label style="display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 16px; border-radius: 14px; background: var(--white); border: 1px solid var(--border);">
+                <i class="icon-search" style="font-size: 18px; color: var(--muted-foreground);"></i>
+                <input aria-label="Buscar" placeholder="Busca un médico, examen o medicamento" style="flex: 1; border: none; outline: none; background: none; font-size: 15px; font-family: inherit; color: var(--foreground);">
+              </label>
+              <div style="background: var(--white); border: 1px solid var(--border); border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 14px; box-shadow: var(--shadow-sm);">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <span style="width: 48px; height: 48px; border-radius: 16px; background: var(--mint-50); color: var(--mint-600); display: flex; align-items: center; justify-content: center; font-size: 24px;"><i class="icon-stethoscope"></i></span>
+                  <span style="display: flex; flex-direction: column; gap: 2px;">
+                    <span style="font-family: var(--font-heading); font-weight: 700; font-size: 19px;">Habla con un médico ahora</span>
+                    <span style="font-size: 13px; color: var(--muted-foreground);">24/7 · Espera menor a 5 min · Incluido</span>
+                  </span>
+                </div>
+                <x-import component-from-global-scope="EasyMDDesignSystem_91cc9c.Button" variant="primary" size="lg" full-width="{{ true }}" onClick="{{ startMedico }}" hint-size="100%,52px">Iniciar consulta médica</x-import>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px;">
+                <button onClick="{{ startPsico }}" style="text-align: left; padding: 16px; border-radius: 20px; background: var(--white); border: 1px solid var(--border); cursor: pointer; display: flex; flex-direction: column; gap: 10px;">
+                  <span style="width: 40px; height: 40px; border-radius: 12px; background: var(--color-wellness-soft); color: var(--color-wellness); display: flex; align-items: center; justify-content: center; font-size: 20px;"><i class="icon-brain"></i></span>
+                  <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px; color: var(--foreground);">Psicología</span>
+                  <span style="font-size: 12px; font-weight: 600; color: var(--color-wellness);">Ilimitada en tu plan</span>
+                </button>
+                <button onClick="{{ goAnimo }}" style="text-align: left; padding: 16px; border-radius: 20px; background: var(--white); border: 1px solid var(--border); cursor: pointer; display: flex; flex-direction: column; gap: 10px;">
+                  <span style="width: 40px; height: 40px; border-radius: 12px; background: var(--blue-50); color: var(--cta-blue); display: flex; align-items: center; justify-content: center; font-size: 20px;"><i class="icon-smile"></i></span>
+                  <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px; color: var(--foreground);">Estado de ánimo</span>
+                  <span style="font-size: 12px; color: var(--muted-foreground);">{{ animoSub }}</span>
+                </button>
+              </div>
+              <button onClick="{{ openBeneficios }}" style="text-align: left; padding: 16px; border-radius: 20px; background: var(--color-primary); border: none; cursor: pointer; display: flex; align-items: center; gap: 14px; color: var(--white);">
+                <i class="icon-badge-check" style="font-size: 24px; color: var(--mint-300);"></i>
+                <span style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
+                  <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">Qué incluye tu plan</span>
+                  <span style="font-size: 13px; color: var(--white); opacity: .85;">Médico 24/7, psicología y descuentos</span>
+                </span>
+                <i class="icon-chevron-right" style="font-size: 20px;"></i>
+              </button>
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-family: var(--font-heading); font-weight: 700; font-size: 17px;">Servicios</span>
+                  <button onClick="{{ goServicios }}" style="height: 44px; padding: 0 4px; border: none; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--cta-blue);">Ver todos</button>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(72px, 1fr)); gap: 10px;">
+                  <sc-for list="{{ srvTop }}" as="s" hint-placeholder-count="4">
+                    <button onClick="{{ s.onClick }}" style="padding: 12px 4px; border-radius: 18px; background: var(--white); border: 1px solid var(--border); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                      <i class="icon-{{ s.icon }}" style="font-size: 22px; color: var(--navy-800);"></i>
+                      <span style="font-size: 12px; font-weight: 600; color: var(--foreground);">{{ s.name }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+              </div>
+              <button onClick="{{ openDetalle }}" style="text-align: left; padding: 14px 16px; border-radius: 18px; background: var(--white); border: 1px solid var(--border); cursor: pointer; display: flex; align-items: center; gap: 12px;">
+                <i class="icon-file-text" style="font-size: 20px; color: var(--muted-foreground);"></i>
+                <span style="flex: 1; display: flex; flex-direction: column;">
+                  <span style="font-size: 14px; font-weight: 600; color: var(--foreground);">Última consulta · 24 sep</span>
+                  <span style="font-size: 13px; color: var(--muted-foreground);">Dr. Emanuel Flores · Receta disponible</span>
+                </span>
+                <i class="icon-chevron-right" style="font-size: 18px; color: var(--subtle-foreground);"></i>
+              </button>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isConsultas }}">
+            <div style="padding: 4px 16px 24px; display: flex; flex-direction: column; gap: 18px;">
+              <span style="font-family: var(--font-heading); font-weight: 700; font-size: 26px; letter-spacing: -0.02em;">Consultas</span>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px;">
+                <button onClick="{{ startMedico }}" style="text-align: left; padding: 16px; border-radius: 20px; background: var(--white); border: 1px solid var(--border); cursor: pointer; display: flex; flex-direction: column; gap: 10px;">
+                  <span style="width: 40px; height: 40px; border-radius: 12px; background: var(--mint-50); color: var(--mint-600); display: flex; align-items: center; justify-content: center; font-size: 20px;"><i class="icon-stethoscope"></i></span>
+                  <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px; color: var(--foreground);">Médico 24/7</span>
+                  <span style="font-size: 12px; color: var(--muted-foreground);">Espera menor a 5 min</span>
+                </button>
+                <button onClick="{{ startPsico }}" style="text-align: left; padding: 16px; border-radius: 20px; background: var(--white); border: 1px solid var(--border); cursor: pointer; display: flex; flex-direction: column; gap: 10px;">
+                  <span style="width: 40px; height: 40px; border-radius: 12px; background: var(--color-wellness-soft); color: var(--color-wellness); display: flex; align-items: center; justify-content: center; font-size: 20px;"><i class="icon-brain"></i></span>
+                  <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px; color: var(--foreground);">Psicología</span>
+                  <span style="font-size: 12px; color: var(--muted-foreground);">Ilimitada</span>
+                </button>
+              </div>
+              <button onClick="{{ goEspecialistas }}" style="text-align: left; padding: 14px 16px; border-radius: 18px; background: var(--white); border: 1px solid var(--border); cursor: pointer; display: flex; align-items: center; gap: 12px;">
+                <i class="icon-user-round-search" style="font-size: 20px; color: var(--navy-800);"></i>
+                <span style="flex: 1; display: flex; flex-direction: column;">
+                  <span style="font-size: 15px; font-weight: 600; color: var(--foreground);">Agenda con un especialista</span>
+                  <span style="font-size: 13px; color: var(--muted-foreground);">Presencial, con descuento</span>
+                </span>
+                <i class="icon-chevron-right" style="font-size: 18px; color: var(--subtle-foreground);"></i>
+              </button>
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 17px;">Próximas citas</span>
+                <sc-if value="{{ hasCita }}">
+                  <div style="background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 16px; display: flex; align-items: center; gap: 12px;">
+                    <i class="icon-calendar-check" style="font-size: 22px; color: var(--mint-600);"></i>
+                    <span style="flex: 1; display: flex; flex-direction: column;">
+                      <span style="font-size: 15px; font-weight: 600;">{{ cita.name }}</span>
+                      <span style="font-size: 13px; color: var(--muted-foreground);">{{ cita.when }}</span>
+                    </span>
+                    <span style="font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: var(--blue-50); color: var(--navy-800);">Confirmada</span>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ noCita }}">
+                  <div style="background: var(--white); border: 1px dashed var(--border-strong); border-radius: 18px; padding: 18px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center;">
+                    <i class="icon-calendar" style="font-size: 26px; color: var(--subtle-foreground);"></i>
+                    <span style="font-size: 14px; color: var(--muted-foreground);">No tienes citas próximas.</span>
+                    <button onClick="{{ goEspecialistas }}" style="height: 44px; padding: 0 16px; border: none; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--cta-blue);">Agendar con especialista</button>
+                  </div>
+                </sc-if>
+              </div>
+              <button onClick="{{ goHistorial }}" style="height: 48px; border-radius: 14px; border: 1px solid var(--border); background: var(--white); cursor: pointer; font-size: 15px; font-weight: 600; color: var(--foreground); display: flex; align-items: center; justify-content: center; gap: 8px;"><i class="icon-clipboard-list" style="font-size: 18px;"></i>Ver consultas anteriores</button>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isForm }}">
+            <div style="padding: 4px 16px 24px; flex: 1; display: flex; flex-direction: column; gap: 20px;">
+              <span style="align-self: flex-start; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--mint-50); color: var(--mint-700);"><i class="icon-badge-check" style="font-size: 14px;"></i>{{ formBadge }}</span>
+              <label style="display: flex; flex-direction: column; gap: 8px;">
+                <span style="font-size: 14px; font-weight: 600;">¿Para quién es la consulta?</span>
+                <select value="{{ who }}" onChange="{{ onWho }}" style="height: 48px; border-radius: 12px; border: 1px solid var(--border-strong); padding: 0 14px; font-size: 15px; font-family: inherit; background: var(--white); color: var(--foreground);">
+                  <option value="yo">Para mí (Nicolás)</option>
+                  <option value="ana">Ana · pareja</option>
+                  <option value="mateo">Mateo · hijo</option>
+                </select>
+              </label>
+              <label style="display: flex; flex-direction: column; gap: 8px;">
+                <span style="font-size: 14px; font-weight: 600;">¿Qué sientes?</span>
+                <textarea value="{{ motivo }}" onChange="{{ onMotivo }}" rows="3" placeholder="{{ motivoPh }}" aria-invalid="{{ hasError }}" style="border-radius: 12px; border: {{ motivoBorder }}; padding: 12px 14px; font-size: 15px; font-family: inherit; line-height: 1.5; resize: none; background: var(--white); color: var(--foreground);"></textarea>
+                <sc-if value="{{ hasError }}">
+                  <span role="alert" style="display: flex; gap: 6px; font-size: 13px; line-height: 1.45; color: var(--danger-700, #a33a2a);"><i class="icon-circle-alert" style="font-size: 15px; margin-top: 1px;"></i>{{ error }}</span>
+                </sc-if>
+              </label>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <span style="font-size: 14px; font-weight: 600;">¿Cómo prefieres?</span>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 14px; background: var(--gray-100);">
+                  <sc-for list="{{ metodos }}" as="mt" hint-placeholder-count="2">
+                    <button onClick="{{ mt.onClick }}" aria-pressed="{{ mt.on }}" style="height: 44px; border-radius: 10px; border: none; cursor: pointer; font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 6px; background: {{ mt.bg }}; color: {{ mt.fg }}; box-shadow: {{ mt.shadow }};"><i class="icon-{{ mt.icon }}" style="font-size: 16px;"></i>{{ mt.label }}</button>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="display: flex; gap: 10px; padding: 12px 14px; border-radius: 14px; background: var(--blue-50); font-size: 13px; line-height: 1.5; color: var(--navy-800);">
+                <i class="icon-lock" style="font-size: 16px; margin-top: 1px;"></i>
+                <span>El profesional verá tu ficha médica para atenderte mejor. <button onClick="{{ goFicha }}" style="padding: 0; border: none; background: none; cursor: pointer; font: inherit; font-weight: 600; color: var(--cta-blue); text-decoration: underline;">Revisar mi ficha</button></span>
+              </div>
+              <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
+                <button onClick="{{ submit }}" disabled="{{ submitting }}" style="height: 52px; border-radius: 14px; border: none; background: var(--color-primary); opacity: {{ submitOpacity }}; color: var(--white); font-family: var(--font-heading); font-weight: 700; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                  <sc-if value="{{ submitting }}">{{ spinner }}</sc-if>{{ submitLabel }}
+                </button>
+                <button onClick="{{ openUrgencias }}" style="height: 44px; border: none; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--danger-700, #a33a2a); display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="icon-siren" style="font-size: 16px;"></i>¿Es una emergencia?</button>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isConectando }}">
+            <div style="padding: 8px 20px 24px; flex: 1; display: flex; flex-direction: column; gap: 22px;">
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; padding-top: 12px;">
+                <span style="width: 96px; height: 96px; border-radius: 50%; background: var(--mint-50); display: flex; align-items: center; justify-content: center;"><span style="width: 64px; height: 64px; border-radius: 50%; background: var(--white); color: var(--mint-600); display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: var(--shadow-sm);"><i class="icon-{{ conIcon }}"></i></span></span>
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 22px;">Buscando a tu {{ conWho }}</span>
+                <span style="font-size: 15px; line-height: 1.5; color: var(--muted-foreground); max-width: 280px;">Tiempo estimado: menos de 5 min. Busca un lugar tranquilo.</span>
+              </div>
+              <div style="background: var(--white); border: 1px solid var(--border); border-radius: 18px; overflow: hidden;">
+                <sc-for list="{{ checks }}" as="ck" hint-placeholder-count="3">
+                  <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-top: {{ ck.border }};">
+                    <i class="icon-{{ ck.icon }}" style="font-size: 18px; color: var(--muted-foreground);"></i>
+                    <span style="flex: 1; font-size: 15px;">{{ ck.label }}</span>
+                    <span style="display: flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 600; color: var(--mint-700);"><i class="icon-circle-check" style="font-size: 16px;"></i>Listo</span>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="margin-top: auto;">
+                <button onClick="{{ openCancelar }}" style="width: 100%; height: 52px; border-radius: 14px; border: 1px solid var(--border-strong); background: var(--white); color: var(--foreground); font-family: var(--font-heading); font-weight: 700; font-size: 16px; cursor: pointer;">Cancelar consulta</button>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isServicios }}">
+            <div style="padding: 4px 16px 24px; display: flex; flex-direction: column; gap: 16px;">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 26px; letter-spacing: -0.02em;">Servicios</span>
+                <button aria-label="Carrito" onClick="{{ goCarrito }}" style="position: relative; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: var(--white); cursor: pointer; font-size: 19px; color: var(--foreground); display: flex; align-items: center; justify-content: center;"><i class="icon-shopping-cart"></i><sc-if value="{{ hasCart }}"><span style="position: absolute; top: -2px; right: -2px; min-width: 18px; height: 18px; border-radius: 999px; background: var(--color-primary); color: var(--white); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center;">{{ cartCount }}</span></sc-if></button>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 14px; background: var(--gray-100);">
+                <sc-for list="{{ srvTabs }}" as="t" hint-placeholder-count="2">
+                  <button onClick="{{ t.onClick }}" style="height: 40px; border-radius: 10px; border: none; cursor: pointer; font-size: 14px; font-weight: 600; background: {{ t.bg }}; color: {{ t.fg }}; box-shadow: {{ t.shadow }};">{{ t.label }}</button>
+                </sc-for>
+              </div>
+              <sc-if value="{{ srvEmpty }}">
+                <div style="padding: 28px 16px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;">
+                  <i class="icon-heart" style="font-size: 32px; color: var(--subtle-foreground);"></i>
+                  <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">Aún no tienes favoritos</span>
+                  <span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground); max-width: 260px;">Toca el corazón de un servicio para tenerlo siempre a mano.</span>
+                </div>
+              </sc-if>
+              <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px;">
+                <sc-for list="{{ srvList }}" as="s" hint-placeholder-count="9">
+                  <div style="position: relative; border-radius: 20px; background: var(--white); border: 1px solid var(--border);">
+                    <button onClick="{{ s.onClick }}" style="width: 100%; text-align: left; padding: 16px; border: none; background: none; cursor: pointer; display: flex; flex-direction: column; gap: 10px;">
+                      <span style="width: 40px; height: 40px; border-radius: 12px; background: var(--app-bg); color: var(--navy-800); display: flex; align-items: center; justify-content: center; font-size: 20px;"><i class="icon-{{ s.icon }}"></i></span>
+                      <span style="display: flex; flex-direction: column; gap: 2px;">
+                        <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px; color: var(--foreground);">{{ s.name }}</span>
+                        <span style="font-size: 12px; line-height: 1.4; color: var(--muted-foreground);">{{ s.sub }}</span>
+                      </span>
+                    </button>
+                    <button aria-label="{{ s.favLabel }}" onClick="{{ s.onFav }}" style="position: absolute; top: 6px; right: 6px; width: 44px; height: 44px; border: none; background: none; cursor: pointer; font-size: 18px; color: {{ s.favColor }}; display: flex; align-items: center; justify-content: center;"><i class="icon-heart"></i></button>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isEspecialistas }}">
+            <div style="padding: 0 16px 24px; display: flex; flex-direction: column; gap: 14px;">
+              <label style="display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 16px; border-radius: 14px; background: var(--white); border: 1px solid var(--border);">
+                <i class="icon-search" style="font-size: 18px; color: var(--muted-foreground);"></i>
+                <input aria-label="Buscar especialista" placeholder="Busca por nombre o especialidad" style="flex: 1; border: none; outline: none; background: none; font-size: 15px; font-family: inherit; color: var(--foreground);">
+              </label>
+              <div style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px;">
+                <sc-for list="{{ cats }}" as="c" hint-placeholder-count="6">
+                  <button onClick="{{ c.onClick }}" style="flex-shrink: 0; height: 40px; padding: 0 14px; border-radius: 999px; border: {{ c.border }}; background: {{ c.bg }}; color: {{ c.fg }}; font-size: 14px; font-weight: 600; cursor: pointer;">{{ c.label }}</button>
+                </sc-for>
+              </div>
+              <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted-foreground);"><i class="icon-map-pin" style="font-size: 15px;"></i>Hasta 15 km de tu dirección</div>
+              <sc-if value="{{ docsEmpty }}">
+                <div style="padding: 24px 16px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; background: var(--white); border-radius: 20px; border: 1px solid var(--border);">
+                  <i class="icon-user-round-search" style="font-size: 30px; color: var(--subtle-foreground);"></i>
+                  <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">Sin especialistas cerca</span>
+                  <span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Prueba otra especialidad o consulta ahora con un médico general.</span>
+                  <button onClick="{{ startMedico }}" style="height: 44px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--border-strong); background: var(--white); cursor: pointer; font-size: 14px; font-weight: 600; color: var(--foreground);">Hablar con un médico</button>
+                </div>
+              </sc-if>
+              <sc-for list="{{ docs }}" as="d" hint-placeholder-count="3">
+                <div style="background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 14px;">
+                  <div style="display: flex; gap: 12px;">
+                    <span style="width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0; background: var(--blue-50); color: var(--navy-800); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: 16px;">{{ d.i }}</span>
+                    <span style="flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+                      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">{{ d.name }}</span>
+                      <span style="font-size: 13px; color: var(--muted-foreground);">{{ d.spec }}</span>
+                      <span style="font-size: 13px; color: var(--muted-foreground); display: flex; align-items: center; gap: 4px;"><i class="icon-star" style="font-size: 13px; color: var(--warning);"></i>{{ d.rating }} · {{ d.place }} · {{ d.km }}</span>
+                    </span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="display: flex; flex-direction: column; flex: 1;">
+                      <span style="display: flex; align-items: baseline; gap: 6px;"><span style="font-family: var(--font-heading); font-weight: 700; font-size: 17px;">{{ d.price }}</span><span style="font-size: 13px; color: var(--muted-foreground); text-decoration: line-through;">{{ d.old }}</span></span>
+                      <span style="font-size: 12px; font-weight: 600; color: var(--mint-700);">{{ d.save }}</span>
+                    </span>
+                    <button onClick="{{ d.onClick }}" style="height: 44px; padding: 0 18px; border-radius: 12px; border: none; background: var(--color-primary); color: var(--white); font-size: 14px; font-weight: 700; cursor: pointer;">Ver horarios</button>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isAgenda }}">
+            <div style="padding: 0 16px 24px; flex: 1; display: flex; flex-direction: column; gap: 18px;">
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">Octubre 2026</span>
+                <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px;">
+                  <sc-for list="{{ days }}" as="dy" hint-placeholder-count="7">
+                    <button onClick="{{ dy.onClick }}" aria-pressed="{{ dy.on }}" style="height: 60px; border-radius: 14px; border: {{ dy.border }}; background: {{ dy.bg }}; color: {{ dy.fg }}; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;">
+                      <span style="font-size: 11px; font-weight: 600;">{{ dy.d }}</span>
+                      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">{{ dy.n }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+              </div>
+              <sc-if value="{{ noSlots }}">
+                <div style="padding: 20px; border-radius: 18px; background: var(--white); border: 1px dashed var(--border-strong); text-align: center; font-size: 14px; color: var(--muted-foreground);">Sin horarios este día. Elige otra fecha.</div>
+              </sc-if>
+              <sc-for list="{{ slotGroups }}" as="sg" hint-placeholder-count="2">
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                  <span style="font-size: 13px; font-weight: 600; color: var(--muted-foreground);">{{ sg.label }}</span>
+                  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px;">
+                    <sc-for list="{{ sg.slots }}" as="sl" hint-placeholder-count="3">
+                      <button onClick="{{ sl.onClick }}" aria-pressed="{{ sl.on }}" style="height: 44px; border-radius: 12px; border: {{ sl.border }}; background: {{ sl.bg }}; color: {{ sl.fg }}; font-size: 14px; font-weight: 600; cursor: pointer;">{{ sl.t }}</button>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-for>
+              <div style="margin-top: auto;">
+                <button onClick="{{ confirmCita }}" disabled="{{ noSlot }}" style="width: 100%; height: 52px; border-radius: 14px; border: none; background: {{ citaBg }}; color: {{ citaFg }}; font-family: var(--font-heading); font-weight: 700; font-size: 16px; cursor: pointer;">{{ citaLabel }}</button>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isFarmacia }}">
+            <div style="padding: 0 16px 24px; display: flex; flex-direction: column; gap: 14px;">
+              <label style="display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 16px; border-radius: 14px; background: var(--white); border: 1px solid var(--border);">
+                <i class="icon-search" style="font-size: 18px; color: var(--muted-foreground);"></i>
+                <input aria-label="Buscar medicamento" placeholder="Busca un medicamento" style="flex: 1; border: none; outline: none; background: none; font-size: 15px; font-family: inherit; color: var(--foreground);">
+              </label>
+              <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">Farmacias cerca de ti</span>
+              <sc-for list="{{ farmacias }}" as="f" hint-placeholder-count="2">
+                <button onClick="{{ f.onClick }}" style="text-align: left; padding: 16px; border-radius: 18px; background: var(--white); border: 1px solid var(--border); cursor: pointer; display: flex; align-items: center; gap: 12px;">
+                  <span style="width: 44px; height: 44px; border-radius: 12px; background: var(--mint-50); color: var(--mint-600); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;"><i class="icon-pill"></i></span>
+                  <span style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
+                    <span style="font-size: 15px; font-weight: 600; color: var(--foreground);">{{ f.name }}</span>
+                    <span style="font-size: 13px; color: var(--muted-foreground);">{{ f.km }} · Descuento con tu plan</span>
+                  </span>
+                  <i class="icon-chevron-right" style="font-size: 18px; color: var(--subtle-foreground);"></i>
+                </button>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isProducto }}">
+            <div style="padding: 0 16px 24px; flex: 1; display: flex; flex-direction: column; gap: 16px;">
+              <div style="height: 180px; border-radius: 22px; background: var(--white); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--subtle-foreground); font-size: 48px;"><i class="icon-{{ prod.icon }}"></i></div>
+              <div style="display: flex; flex-direction: column; gap: 4px;">
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 22px;">{{ prod.name }}</span>
+                <span style="font-size: 14px; color: var(--muted-foreground);">{{ prod.desc }}</span>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px; border-radius: 18px; background: var(--white); border: 1px solid var(--border);">
+                <span style="display: flex; flex-direction: column; gap: 2px;">
+                  <span style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: var(--font-heading); font-weight: 700; font-size: 22px;">{{ prod.price }}</span><span style="font-size: 14px; color: var(--muted-foreground); text-decoration: line-through;">{{ prod.old }}</span></span>
+                  <span style="font-size: 12px; font-weight: 600; color: var(--mint-700);">{{ prod.save }}</span>
+                </span>
+                <div style="display: flex; align-items: center; gap: 4px;">
+                  <button aria-label="Quitar uno" onClick="{{ qtyMinus }}" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--border-strong); background: var(--white); cursor: pointer; font-size: 18px; color: var(--foreground); display: flex; align-items: center; justify-content: center;"><i class="icon-minus"></i></button>
+                  <span aria-live="polite" style="min-width: 32px; text-align: center; font-family: var(--font-heading); font-weight: 700; font-size: 17px;">{{ qty }}</span>
+                  <button aria-label="Agregar uno" onClick="{{ qtyPlus }}" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--border-strong); background: var(--white); cursor: pointer; font-size: 18px; color: var(--foreground); display: flex; align-items: center; justify-content: center;"><i class="icon-plus"></i></button>
+                </div>
+              </div>
+              <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
+                <x-import component-from-global-scope="EasyMDDesignSystem_91cc9c.Button" variant="primary" size="lg" full-width="{{ true }}" onClick="{{ comprarAhora }}" hint-size="100%,52px">Comprar ahora</x-import>
+                <x-import component-from-global-scope="EasyMDDesignSystem_91cc9c.Button" variant="secondary" size="lg" full-width="{{ true }}" onClick="{{ addCart }}" hint-size="100%,52px">Agregar al carrito</x-import>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isCarrito }}">
+            <div style="padding: 0 16px 24px; flex: 1; display: flex; flex-direction: column; gap: 14px;">
+              <sc-if value="{{ cartEmpty }}">
+                <div style="flex: 1; padding: 40px 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center;">
+                  <i class="icon-shopping-cart" style="font-size: 34px; color: var(--subtle-foreground);"></i>
+                  <span style="font-family: var(--font-heading); font-weight: 700; font-size: 17px;">Tu carrito está vacío</span>
+                  <span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground); max-width: 260px;">Agrega medicamentos o exámenes con el descuento de tu plan.</span>
+                  <button onClick="{{ goServicios }}" style="height: 44px; padding: 0 18px; border-radius: 12px; border: 1px solid var(--border-strong); background: var(--white); cursor: pointer; font-size: 14px; font-weight: 600; color: var(--foreground);">Ver servicios</button>
+                </div>
+              </sc-if>
+              <sc-if value="{{ hasCart }}">
+                <div style="background: var(--white); border: 1px solid var(--border); border-radius: 18px; overflow: hidden;">
+                  <sc-for list="{{ cartItems }}" as="ci" hint-placeholder-count="1">
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-top: {{ ci.border }};">
+                      <i class="icon-{{ ci.icon }}" style="font-size: 20px; color: var(--navy-800);"></i>
+                      <span style="flex: 1; display: flex; flex-direction: column;"><span style="font-size: 15px; font-weight: 600;">{{ ci.name }}</span><span style="font-size: 13px; color: var(--muted-foreground);">Cantidad: {{ ci.qty }}</span></span>
+                      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">{{ ci.total }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0 4px;"><span style="font-size: 15px; color: var(--muted-foreground);">Total</span><span style="font-family: var(--font-heading); font-weight: 700; font-size: 24px;">{{ cartTotal }}</span></div>
+                <div style="margin-top: auto;">
+                  <x-import component-from-global-scope="EasyMDDesignSystem_91cc9c.Button" variant="primary" size="lg" full-width="{{ true }}" onClick="{{ pagar }}" hint-size="100%,52px">Continuar al pago</x-import>
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isAnimo }}">
+            <div style="padding: 0 16px 24px; display: flex; flex-direction: column; gap: 18px;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 14px; background: var(--gray-100);">
+                <sc-for list="{{ moodTabs }}" as="t" hint-placeholder-count="2">
+                  <button onClick="{{ t.onClick }}" style="height: 40px; border-radius: 10px; border: none; cursor: pointer; font-size: 14px; font-weight: 600; background: {{ t.bg }}; color: {{ t.fg }}; box-shadow: {{ t.shadow }};">{{ t.label }}</button>
+                </sc-for>
+              </div>
+              <sc-if value="{{ moodHoy }}">
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 20px;">¿Cómo te sientes hoy?</span>
+                <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;">
+                  <sc-for list="{{ moods }}" as="mo" hint-placeholder-count="5">
+                    <button onClick="{{ mo.onClick }}" aria-pressed="{{ mo.on }}" style="padding: 12px 2px; border-radius: 16px; border: {{ mo.border }}; background: {{ mo.bg }}; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                      <i class="icon-{{ mo.icon }}" style="font-size: 26px; color: var(--navy-800);"></i>
+                      <span style="font-size: 11px; font-weight: 600; color: var(--foreground);">{{ mo.label }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ moodSaved }}">
+                  <div style="display: flex; gap: 10px; padding: 14px 16px; border-radius: 16px; background: var(--mint-50); font-size: 14px; line-height: 1.5;"><i class="icon-circle-check" style="font-size: 18px; color: var(--mint-600);"></i>Registro guardado. Gracias por contarnos.</div>
+                </sc-if>
+                <sc-if value="{{ moodSuggest }}">
+                  <div style="background: var(--color-wellness-soft); border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+                    <span style="font-size: 14px; line-height: 1.5;">Hablar con alguien puede ayudarte. Tu plan incluye psicología ilimitada.</span>
+                    <button onClick="{{ startPsico }}" style="height: 48px; border-radius: 12px; border: none; background: var(--color-wellness); color: var(--white); font-size: 15px; font-weight: 700; cursor: pointer;">Iniciar consulta psicológica</button>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ moodCanSave }}">
+                  <button onClick="{{ saveMood }}" disabled="{{ noMood }}" style="height: 52px; border-radius: 14px; border: none; background: {{ saveBg }}; color: {{ saveFg }}; font-family: var(--font-heading); font-weight: 700; font-size: 16px; cursor: pointer;">Guardar registro</button>
+                </sc-if>
+              </sc-if>
+              <sc-if value="{{ moodSemana }}">
+                <sc-if value="{{ moodSaved }}">
+                  <div style="background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 16px; display: flex; align-items: center; gap: 12px;">
+                    <i class="icon-{{ moodIcon }}" style="font-size: 24px; color: var(--navy-800);"></i>
+                    <span style="flex: 1; display: flex; flex-direction: column;"><span style="font-size: 15px; font-weight: 600;">{{ moodLabel }}</span><span style="font-size: 13px; color: var(--muted-foreground);">Hoy, martes 13</span></span>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ noMoodSaved }}">
+                  <div style="padding: 28px 16px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; background: var(--white); border: 1px solid var(--border); border-radius: 20px;">
+                    <i class="icon-chart-line" style="font-size: 30px; color: var(--subtle-foreground);"></i>
+                    <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">Aún no hay registros esta semana</span>
+                    <span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Registra cómo te sientes en 5 segundos y verás tu semana aquí.</span>
+                    <button onClick="{{ moodToHoy }}" style="height: 44px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--border-strong); background: var(--white); cursor: pointer; font-size: 14px; font-weight: 600; color: var(--foreground);">Registrar hoy</button>
+                  </div>
+                </sc-if>
+              </sc-if>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isExpediente }}">
+            <div style="padding: 4px 16px 24px; display: flex; flex-direction: column; gap: 16px;">
+              <div style="display: flex; flex-direction: column; gap: 4px;">
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 26px; letter-spacing: -0.02em;">Expediente</span>
+                <span style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted-foreground);"><i class="icon-lock" style="font-size: 14px;"></i>Privado. Solo tú y tus médicos lo ven.</span>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 4px; border-radius: 14px; background: var(--gray-100);">
+                <sc-for list="{{ expTabs }}" as="t" hint-placeholder-count="4">
+                  <button onClick="{{ t.onClick }}" style="height: 40px; border-radius: 10px; border: none; cursor: pointer; font-size: 13px; font-weight: 600; background: {{ t.bg }}; color: {{ t.fg }}; box-shadow: {{ t.shadow }};">{{ t.label }}</button>
+                </sc-for>
+              </div>
+
+              <sc-if value="{{ expFicha }}">
+                <div style="background: var(--white); border: 1px solid var(--border); border-radius: 20px; overflow: hidden;">
+                  <sc-for list="{{ ficha }}" as="fi" hint-placeholder-count="6">
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-top: {{ fi.border }};">
+                      <i class="icon-{{ fi.icon }}" style="font-size: 18px; color: var(--muted-foreground);"></i>
+                      <span style="flex: 1; font-size: 14px; color: var(--muted-foreground);">{{ fi.k }}</span>
+                      <span style="font-size: 14px; font-weight: 600; text-align: right;">{{ fi.v }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+                <x-import component-from-global-scope="EasyMDDesignSystem_91cc9c.Button" variant="secondary" size="lg" full-width="{{ true }}" onClick="{{ editFicha }}" hint-size="100%,52px">Actualizar mi ficha médica</x-import>
+              </sc-if>
+
+              <sc-if value="{{ expHistorial }}">
+                <sc-if value="{{ isLoading }}">
+                  <div style="display: flex; flex-direction: column; gap: 10px;" aria-busy="true">
+                    <sc-for list="{{ skel }}" as="sk" hint-placeholder-count="3">
+                      <div style="height: 72px; border-radius: 18px; background: var(--white); border: 1px solid var(--border); padding: 16px; display: flex; gap: 12px; box-sizing: border-box;">
+                        <span style="width: 40px; height: 40px; border-radius: 12px; background: var(--gray-100);"></span>
+                        <span style="flex: 1; display: flex; flex-direction: column; gap: 8px; justify-content: center;"><span style="height: 12px; width: 60%; border-radius: 6px; background: var(--gray-100);"></span><span style="height: 10px; width: 40%; border-radius: 6px; background: var(--gray-100);"></span></span>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ isError }}">
+                  <div role="alert" style="padding: 24px 16px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; background: var(--white); border: 1px solid var(--border); border-radius: 20px;">
+                    <i class="icon-cloud-off" style="font-size: 30px; color: var(--danger);"></i>
+                    <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">No pudimos cargar tu historial</span>
+                    <span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Revisa tu conexión e intenta de nuevo. Tus datos están seguros.</span>
+                    <button onClick="{{ retry }}" style="height: 44px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--border-strong); background: var(--white); cursor: pointer; font-size: 14px; font-weight: 600; color: var(--foreground); display: flex; align-items: center; gap: 6px;"><i class="icon-refresh-cw" style="font-size: 15px;"></i>Reintentar</button>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ isEmpty }}">
+                  <div style="padding: 24px 16px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; background: var(--white); border: 1px solid var(--border); border-radius: 20px;">
+                    <i class="icon-clipboard-list" style="font-size: 30px; color: var(--subtle-foreground);"></i>
+                    <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">Aún no tienes consultas</span>
+                    <span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Cuando te atienda un médico, aquí verás el resumen y tus recetas.</span>
+                    <button onClick="{{ startMedico }}" style="height: 44px; padding: 0 16px; border-radius: 12px; border: none; background: var(--color-primary); cursor: pointer; font-size: 14px; font-weight: 700; color: var(--white);">Iniciar consulta médica</button>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ isNormal }}">
+                  <sc-for list="{{ historial }}" as="h" hint-placeholder-count="3">
+                    <button onClick="{{ h.onClick }}" style="text-align: left; padding: 14px 16px; border-radius: 18px; background: var(--white); border: 1px solid var(--border); cursor: pointer; display: flex; align-items: center; gap: 12px;">
+                      <span style="width: 40px; height: 40px; border-radius: 12px; background: {{ h.bg }}; color: {{ h.fg }}; display: flex; align-items: center; justify-content: center; font-size: 19px; flex-shrink: 0;"><i class="icon-{{ h.icon }}"></i></span>
+                      <span style="flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+                        <span style="font-size: 15px; font-weight: 600; color: var(--foreground);">{{ h.tipo }}</span>
+                        <span style="font-size: 13px; color: var(--muted-foreground);">{{ h.doc }} · {{ h.fecha }}</span>
+                      </span>
+                      <span style="font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: var(--mint-50); color: var(--mint-700);">Completada</span>
+                    </button>
+                  </sc-for>
+                </sc-if>
+              </sc-if>
+
+              <sc-if value="{{ expRecetas }}">
+                <sc-for list="{{ recetas }}" as="rc" hint-placeholder-count="2">
+                  <div style="padding: 16px; border-radius: 18px; background: var(--white); border: 1px solid var(--border); display: flex; align-items: center; gap: 12px;">
+                    <span style="width: 40px; height: 40px; border-radius: 12px; background: var(--mint-50); color: var(--mint-600); display: flex; align-items: center; justify-content: center; font-size: 19px; flex-shrink: 0;"><i class="icon-pill"></i></span>
+                    <span style="flex: 1; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 15px; font-weight: 600;">{{ rc.med }}</span><span style="font-size: 13px; color: var(--muted-foreground);">{{ rc.meta }}</span></span>
+                    <button aria-label="Descargar receta en PDF" onClick="{{ rc.onClick }}" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--border); background: var(--white); cursor: pointer; font-size: 18px; color: var(--navy-800); display: flex; align-items: center; justify-content: center;"><i class="icon-download"></i></button>
+                  </div>
+                </sc-for>
+              </sc-if>
+
+              <sc-if value="{{ expResultados }}">
+                <sc-for list="{{ resultados }}" as="rs" hint-placeholder-count="2">
+                  <div style="padding: 16px; border-radius: 18px; background: var(--white); border: 1px solid var(--border); display: flex; align-items: center; gap: 12px;">
+                    <span style="width: 40px; height: 40px; border-radius: 12px; background: var(--blue-50); color: var(--navy-800); display: flex; align-items: center; justify-content: center; font-size: 19px; flex-shrink: 0;"><i class="icon-flask-conical"></i></span>
+                    <span style="flex: 1; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 15px; font-weight: 600;">{{ rs.name }}</span><span style="font-size: 13px; color: var(--muted-foreground);">{{ rs.meta }}</span></span>
+                    <button aria-label="Ver resultado en PDF" onClick="{{ rs.onClick }}" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--border); background: var(--white); cursor: pointer; font-size: 18px; color: var(--navy-800); display: flex; align-items: center; justify-content: center;"><i class="icon-file-text"></i></button>
+                  </div>
+                </sc-for>
+              </sc-if>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isDetalle }}">
+            <div style="padding: 0 16px 24px; display: flex; flex-direction: column; gap: 14px;">
+              <div style="background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 14px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <span style="width: 52px; height: 52px; border-radius: 50%; background: var(--blue-50); color: var(--navy-800); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: 16px;">EF</span>
+                  <span style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
+                    <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">Dr. Emanuel Flores</span>
+                    <span style="font-size: 13px; color: var(--muted-foreground);">Médico general · Registro 73222</span>
+                  </span>
+                  <span style="font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: var(--mint-50); color: var(--mint-700);">Completada</span>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+                  <sc-for list="{{ detalle }}" as="dt" hint-placeholder-count="4">
+                    <span style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 12px; color: var(--muted-foreground);">{{ dt.k }}</span><span style="font-size: 15px; font-weight: 600;">{{ dt.v }}</span></span>
+                  </sc-for>
+                </div>
+              </div>
+              <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">Receta</span>
+              <div style="padding: 16px; border-radius: 18px; background: var(--white); border: 1px solid var(--border); display: flex; align-items: center; gap: 12px;">
+                <i class="icon-pill" style="font-size: 20px; color: var(--mint-600);"></i>
+                <span style="flex: 1; display: flex; flex-direction: column;"><span style="font-size: 15px; font-weight: 600;">Ibuprofeno 600 mg</span><span style="font-size: 13px; color: var(--muted-foreground);">Receta #1</span></span>
+                <button onClick="{{ dlReceta }}" style="height: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--border-strong); background: var(--white); cursor: pointer; font-size: 14px; font-weight: 600; color: var(--foreground); display: flex; align-items: center; gap: 6px;"><i class="icon-download" style="font-size: 15px;"></i>PDF</button>
+              </div>
+              <button onClick="{{ toggleTiempos }}" aria-expanded="{{ showTiempos }}" style="height: 44px; border: none; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--cta-blue); display: flex; align-items: center; gap: 6px; padding: 0;"><i class="icon-clock" style="font-size: 15px;"></i>{{ tiemposLabel }}</button>
+              <sc-if value="{{ showTiempos }}">
+                <div style="background: var(--white); border: 1px solid var(--border); border-radius: 18px; overflow: hidden;">
+                  <sc-for list="{{ tiempos }}" as="ti" hint-placeholder-count="4">
+                    <div style="display: flex; justify-content: space-between; padding: 12px 16px; border-top: {{ ti.border }}; font-size: 14px;"><span style="color: var(--muted-foreground);">{{ ti.k }}</span><span style="font-weight: 600;">{{ ti.v }}</span></div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <x-import component-from-global-scope="EasyMDDesignSystem_91cc9c.Button" variant="primary" size="lg" full-width="{{ true }}" onClick="{{ dlResumen }}" hint-size="100%,52px">Descargar resumen en PDF</x-import>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isOrdenes }}">
+            <div style="padding: 4px 16px 24px; display: flex; flex-direction: column; gap: 16px;">
+              <span style="font-family: var(--font-heading); font-weight: 700; font-size: 26px; letter-spacing: -0.02em;">Órdenes</span>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 14px; background: var(--gray-100);">
+                <sc-for list="{{ ordTabs }}" as="t" hint-placeholder-count="2">
+                  <button onClick="{{ t.onClick }}" style="height: 40px; border-radius: 10px; border: none; cursor: pointer; font-size: 14px; font-weight: 600; background: {{ t.bg }}; color: {{ t.fg }}; box-shadow: {{ t.shadow }};">{{ t.label }}</button>
+                </sc-for>
+              </div>
+              <sc-if value="{{ isLoading }}">
+                <div style="display: flex; flex-direction: column; gap: 10px;" aria-busy="true">
+                  <sc-for list="{{ skel }}" as="sk" hint-placeholder-count="3">
+                    <div style="height: 88px; border-radius: 18px; background: var(--white); border: 1px solid var(--border); padding: 16px; display: flex; gap: 12px; box-sizing: border-box;">
+                      <span style="width: 40px; height: 40px; border-radius: 12px; background: var(--gray-100);"></span>
+                      <span style="flex: 1; display: flex; flex-direction: column; gap: 8px; justify-content: center;"><span style="height: 12px; width: 55%; border-radius: 6px; background: var(--gray-100);"></span><span style="height: 10px; width: 75%; border-radius: 6px; background: var(--gray-100);"></span></span>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ isError }}">
+                <div role="alert" style="padding: 24px 16px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; background: var(--white); border: 1px solid var(--border); border-radius: 20px;">
+                  <i class="icon-cloud-off" style="font-size: 30px; color: var(--danger);"></i>
+                  <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">No pudimos cargar tus órdenes</span>
+                  <span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Algo salió mal de nuestro lado. Intenta de nuevo en un momento.</span>
+                  <button onClick="{{ retry }}" style="height: 44px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--border-strong); background: var(--white); cursor: pointer; font-size: 14px; font-weight: 600; color: var(--foreground); display: flex; align-items: center; gap: 6px;"><i class="icon-refresh-cw" style="font-size: 15px;"></i>Reintentar</button>
+                </div>
+              </sc-if>
+              <sc-if value="{{ ordEmpty }}">
+                <div style="padding: 24px 16px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; background: var(--white); border: 1px solid var(--border); border-radius: 20px;">
+                  <i class="icon-receipt" style="font-size: 30px; color: var(--subtle-foreground);"></i>
+                  <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">{{ ordEmptyTitle }}</span>
+                  <span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Tus pedidos de farmacia y laboratorio aparecerán aquí.</span>
+                  <button onClick="{{ goServicios }}" style="height: 44px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--border-strong); background: var(--white); cursor: pointer; font-size: 14px; font-weight: 600; color: var(--foreground);">Ver servicios</button>
+                </div>
+              </sc-if>
+              <sc-if value="{{ ordShow }}">
+                <sc-for list="{{ ordenes }}" as="o" hint-placeholder-count="2">
+                  <div style="padding: 16px; border-radius: 18px; background: var(--white); border: 1px solid var(--border); display: flex; flex-direction: column; gap: 12px;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                      <span style="width: 40px; height: 40px; border-radius: 12px; background: var(--app-bg); color: var(--navy-800); display: flex; align-items: center; justify-content: center; font-size: 19px; flex-shrink: 0;"><i class="icon-{{ o.icon }}"></i></span>
+                      <span style="flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0;"><span style="font-size: 15px; font-weight: 600;">{{ o.type }}</span><span style="font-size: 13px; color: var(--muted-foreground);">{{ o.prov }}</span></span>
+                      <span style="font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: {{ o.chipBg }}; color: {{ o.chipFg }}; white-space: nowrap;">{{ o.status }}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="font-size: 13px; color: var(--muted-foreground);">{{ o.date }}</span>
+                      <button onClick="{{ o.onClick }}" style="height: 44px; padding: 0 4px; border: none; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--cta-blue); display: flex; align-items: center; gap: 4px;">Ver factura<i class="icon-chevron-right" style="font-size: 16px;"></i></button>
+                    </div>
+                  </div>
+                </sc-for>
+              </sc-if>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isMensajes }}">
+            <div style="padding: 0 16px 24px; display: flex; flex-direction: column; gap: 10px;">
+              <sc-if value="{{ isLoading }}">
+                <sc-for list="{{ skel }}" as="sk" hint-placeholder-count="3">
+                  <div style="height: 68px; border-radius: 18px; background: var(--white); border: 1px solid var(--border); padding: 14px 16px; display: flex; gap: 12px; box-sizing: border-box;"><span style="width: 40px; height: 40px; border-radius: 50%; background: var(--gray-100);"></span><span style="flex: 1; display: flex; flex-direction: column; gap: 8px; justify-content: center;"><span style="height: 12px; width: 50%; border-radius: 6px; background: var(--gray-100);"></span><span style="height: 10px; width: 70%; border-radius: 6px; background: var(--gray-100);"></span></span></div>
+                </sc-for>
+              </sc-if>
+              <sc-if value="{{ isError }}">
+                <div role="alert" style="padding: 24px 16px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; background: var(--white); border: 1px solid var(--border); border-radius: 20px;">
+                  <i class="icon-cloud-off" style="font-size: 30px; color: var(--danger);"></i>
+                  <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">No pudimos cargar tus mensajes</span>
+                  <button onClick="{{ retry }}" style="height: 44px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--border-strong); background: var(--white); cursor: pointer; font-size: 14px; font-weight: 600; color: var(--foreground);">Reintentar</button>
+                </div>
+              </sc-if>
+              <sc-if value="{{ isEmpty }}">
+                <div style="padding: 32px 16px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;">
+                  <i class="icon-message-circle" style="font-size: 32px; color: var(--subtle-foreground);"></i>
+                  <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">Sin mensajes por ahora</span>
+                  <span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Aquí verás las conversaciones con tus médicos y con soporte.</span>
+                </div>
+              </sc-if>
+              <sc-if value="{{ isNormal }}">
+                <sc-for list="{{ convs }}" as="cv" hint-placeholder-count="2">
+                  <button onClick="{{ cv.onClick }}" style="text-align: left; padding: 14px 16px; border-radius: 18px; background: var(--white); border: 1px solid var(--border); cursor: pointer; display: flex; align-items: center; gap: 12px;">
+                    <span style="width: 44px; height: 44px; border-radius: 50%; background: var(--blue-50); color: var(--navy-800); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;"><i class="icon-{{ cv.icon }}"></i></span>
+                    <span style="flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0;"><span style="font-size: 15px; font-weight: 600; color: var(--foreground);">{{ cv.name }}</span><span style="font-size: 13px; color: var(--muted-foreground); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ cv.last }}</span></span>
+                    <span style="font-size: 12px; color: var(--muted-foreground);">{{ cv.when }}</span>
+                  </button>
+                </sc-for>
+              </sc-if>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isCuenta }}">
+            <div style="padding: 0 16px 24px; display: flex; flex-direction: column; gap: 14px;">
+              <div style="background: var(--color-primary); border-radius: 22px; padding: 18px; display: flex; flex-direction: column; gap: 14px; color: var(--white);">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                  <span style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 13px; opacity: .85;">Tu plan</span><span style="font-family: var(--font-heading); font-weight: 700; font-size: 22px;">Plan Plus</span></span>
+                  <span style="font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: var(--mint-300); color: var(--navy-900);">Activo</span>
+                </div>
+                <span style="font-size: 14px;">US$14.95 al mes · Renueva el 14 nov</span>
+                <button onClick="{{ openBeneficios }}" style="height: 44px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.4); background: none; color: var(--white); font-size: 14px; font-weight: 700; cursor: pointer;">Ver qué incluye</button>
+              </div>
+              <div style="background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">Familia</span>
+                <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                  <sc-for list="{{ familia }}" as="fm" hint-placeholder-count="3">
+                    <span style="display: flex; flex-direction: column; align-items: center; gap: 6px;"><span style="width: 48px; height: 48px; border-radius: 50%; background: var(--blue-50); color: var(--navy-800); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: 15px;">{{ fm.i }}</span><span style="font-size: 12px; color: var(--muted-foreground);">{{ fm.n }}</span></span>
+                  </sc-for>
+                  <button onClick="{{ addFamiliar }}" style="display: flex; flex-direction: column; align-items: center; gap: 6px; border: none; background: none; cursor: pointer; padding: 0;"><span style="width: 48px; height: 48px; border-radius: 50%; border: 1.5px dashed var(--border-strong); color: var(--muted-foreground); display: flex; align-items: center; justify-content: center; font-size: 20px;"><i class="icon-plus"></i></span><span style="font-size: 12px; color: var(--muted-foreground);">Agregar</span></button>
+                </div>
+              </div>
+              <div style="background: var(--white); border: 1px solid var(--border); border-radius: 20px; overflow: hidden;">
+                <sc-for list="{{ ajustes }}" as="a" hint-placeholder-count="6">
+                  <button onClick="{{ a.onClick }}" style="width: 100%; text-align: left; display: flex; align-items: center; gap: 14px; min-height: 52px; padding: 0 16px; border: none; border-top: {{ a.border }}; background: none; cursor: pointer;">
+                    <i class="icon-{{ a.icon }}" style="font-size: 19px; color: var(--muted-foreground);"></i>
+                    <span style="flex: 1; font-size: 15px; color: var(--foreground);">{{ a.label }}</span>
+                    <i class="icon-chevron-right" style="font-size: 18px; color: var(--subtle-foreground);"></i>
+                  </button>
+                </sc-for>
+              </div>
+              <button onClick="{{ logout }}" style="height: 48px; border: none; background: none; cursor: pointer; font-size: 15px; font-weight: 600; color: var(--danger-700, #a33a2a);">Cerrar sesión</button>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isExito }}">
+            <div style="flex: 1; padding: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px;">
+              <span style="width: 80px; height: 80px; border-radius: 50%; background: var(--mint-50); color: var(--mint-600); display: flex; align-items: center; justify-content: center; font-size: 40px;"><i class="icon-check"></i></span>
+              <span style="font-family: var(--font-heading); font-weight: 700; font-size: 24px; text-wrap: pretty;">{{ exito.title }}</span>
+              <span style="font-size: 15px; line-height: 1.55; color: var(--muted-foreground); max-width: 290px; text-wrap: pretty;">{{ exito.body }}</span>
+              <div style="width: 100%; margin-top: 10px; display: flex; flex-direction: column; gap: 10px;">
+                <x-import component-from-global-scope="EasyMDDesignSystem_91cc9c.Button" variant="primary" size="lg" full-width="{{ true }}" onClick="{{ goInicio }}" hint-size="100%,52px">Volver al inicio</x-import>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+
+        <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
+          <nav aria-label="Navegación principal" style="flex-shrink: 0; display: grid; grid-template-columns: repeat(5, 1fr); background: var(--white); border-top: 1px solid var(--border); padding: 6px 0 20px;">
+            <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+              <button onClick="{{ n.onClick }}" aria-current="{{ n.current }}" style="min-height: 52px; border: none; background: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: {{ n.color }};">
+                <span style="width: 52px; height: 28px; border-radius: 999px; background: {{ n.pill }}; display: flex; align-items: center; justify-content: center;"><i class="icon-{{ n.icon }}" style="font-size: 20px;"></i></span>
+                <span style="font-size: 11px; font-weight: {{ n.weight }};">{{ n.label }}</span>
+              </button>
+            </sc-for>
+          </nav>
+        </sc-if>
+
+        <sc-if value="{{ hasToast }}">
+          <div role="status" style="position: absolute; left: 16px; right: 16px; bottom: 96px; padding: 14px 16px; border-radius: 14px; background: var(--navy-900); color: var(--white); font-size: 14px; display: flex; align-items: center; gap: 10px; box-shadow: var(--shadow-lg);"><i class="icon-circle-check" style="font-size: 18px; color: var(--mint-300);"></i>{{ toast }}</div>
+        </sc-if>
+
+        <sc-if value="{{ hasSheet }}">
+          <div style="position: absolute; inset: 0; background: rgba(11,31,58,0.45); display: flex; flex-direction: column; justify-content: flex-end;">
+            <button aria-label="Cerrar" onClick="{{ closeSheet }}" style="flex: 1; border: none; background: none; cursor: pointer;"></button>
+            <div role="dialog" aria-modal="true" style="background: var(--white); border-radius: 24px 24px 0 0; padding: 12px 20px 28px; display: flex; flex-direction: column; gap: 16px;">
+              <span style="align-self: center; width: 40px; height: 4px; border-radius: 999px; background: var(--border-strong);"></span>
+              <sc-if value="{{ sheetCancelar }}">
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 20px;">¿Cancelar la consulta?</span>
+                <span style="font-size: 15px; line-height: 1.5; color: var(--muted-foreground);">Perderás tu lugar en la fila. Puedes iniciar otra cuando quieras.</span>
+                <button onClick="{{ confirmCancel }}" style="height: 52px; border-radius: 14px; border: none; background: var(--danger); color: var(--white); font-family: var(--font-heading); font-weight: 700; font-size: 16px; cursor: pointer;">Sí, cancelar</button>
+                <button onClick="{{ closeSheet }}" style="height: 48px; border-radius: 14px; border: 1px solid var(--border-strong); background: var(--white); color: var(--foreground); font-size: 15px; font-weight: 600; cursor: pointer;">Seguir esperando</button>
+              </sc-if>
+              <sc-if value="{{ sheetBeneficios }}">
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 20px;">Tu Plan Plus incluye</span>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                  <sc-for list="{{ beneficios }}" as="b" hint-placeholder-count="4">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                      <span style="width: 40px; height: 40px; border-radius: 12px; background: var(--app-bg); color: var(--navy-800); display: flex; align-items: center; justify-content: center; font-size: 19px; flex-shrink: 0;"><i class="icon-{{ b.icon }}"></i></span>
+                      <span style="flex: 1; font-size: 15px; font-weight: 500;">{{ b.label }}</span>
+                      <span style="font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: {{ b.chipBg }}; color: {{ b.chipFg }};">{{ b.tag }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+                <button onClick="{{ closeSheet }}" style="height: 48px; border-radius: 14px; border: 1px solid var(--border-strong); background: var(--white); color: var(--foreground); font-size: 15px; font-weight: 600; cursor: pointer;">Entendido</button>
+              </sc-if>
+              <sc-if value="{{ sheetUrgencias }}">
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 20px;">Si es una emergencia</span>
+                <span style="font-size: 15px; line-height: 1.5; color: var(--muted-foreground);">Dolor de pecho, dificultad para respirar, sangrado fuerte o pérdida de conciencia: llama a emergencias o ve al hospital más cercano.</span>
+                <button onClick="{{ closeSheet }}" style="height: 52px; border-radius: 14px; border: none; background: var(--danger); color: var(--white); font-family: var(--font-heading); font-weight: 700; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;"><i class="icon-phone" style="font-size: 18px;"></i>Llamar a emergencias</button>
+                <button onClick="{{ closeSheet }}" style="height: 48px; border-radius: 14px; border: 1px solid var(--border-strong); background: var(--white); color: var(--foreground); font-size: 15px; font-weight: 600; cursor: pointer;">Volver</button>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+      <span style="font-size: 13px; color: var(--muted-foreground);">Prototipo navegable · usa el Tweak "Estado de datos" para ver carga, vacío y error</span>
+    </div>
+  </div>
+
+  <section style="display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; flex-direction: column; gap: 4px;">
+      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--cta-blue);">04 · Design system</span>
+      <h2 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 26px; letter-spacing: -0.02em;">Componentes del rediseño</h2>
+      <p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--muted-foreground); max-width: 720px;">Sobre los tokens de EasyMD. El navy reemplaza al menta en los botones principales para cumplir contraste AA; el menta queda para marca, éxito y estado activo.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+        <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">Color</span>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+          <sc-for list="{{ swatches }}" as="sw" hint-placeholder-count="6">
+            <span style="display: flex; flex-direction: column; gap: 6px;"><span style="height: 48px; border-radius: 12px; background: {{ sw.v }}; border: 1px solid var(--border);"></span><span style="font-size: 12px; font-weight: 600;">{{ sw.n }}</span><span style="font-size: 11px; color: var(--muted-foreground);">{{ sw.use }}</span></span>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 10px;">
+        <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">Tipografía</span>
+        <span style="font-family: var(--font-heading); font-weight: 700; font-size: 26px; letter-spacing: -0.02em;">Título 26 · Jakarta</span>
+        <span style="font-family: var(--font-heading); font-weight: 700; font-size: 18px;">Subtítulo 18 · Jakarta</span>
+        <span style="font-size: 15px; line-height: 1.55;">Cuerpo 15–16 · Inter, interlineado 1.5</span>
+        <span style="font-size: 13px; color: var(--muted-foreground);">Secundario 13 · Inter</span>
+        <span style="font-size: 12px; font-weight: 600;">Etiqueta 12 · Inter semibold</span>
+        <span style="font-size: 12px; color: var(--muted-foreground);">Solo 5 tamaños. Iconos Lucide outline 18–22 px.</span>
+      </div>
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+        <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">Botones</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <x-import component-from-global-scope="EasyMDDesignSystem_91cc9c.Button" variant="primary" size="md" hint-size="auto,44px">Primario</x-import>
+          <x-import component-from-global-scope="EasyMDDesignSystem_91cc9c.Button" variant="secondary" size="md" hint-size="auto,44px">Secundario</x-import>
+          <x-import component-from-global-scope="EasyMDDesignSystem_91cc9c.Button" variant="ghost" size="md" hint-size="auto,44px">Ghost</x-import>
+          <button style="height: 44px; padding: 0 18px; border-radius: 12px; border: none; background: var(--danger); color: var(--white); font-family: var(--font-heading); font-weight: 700; font-size: 15px; cursor: pointer;">Destructivo</button>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+          <x-import component-from-global-scope="EasyMDDesignSystem_91cc9c.Button" variant="primary" size="sm" hint-size="auto,36px">sm</x-import>
+          <x-import component-from-global-scope="EasyMDDesignSystem_91cc9c.Button" variant="primary" size="md" hint-size="auto,44px">md</x-import>
+          <x-import component-from-global-scope="EasyMDDesignSystem_91cc9c.Button" variant="primary" size="lg" hint-size="auto,52px">lg</x-import>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <button style="height: 44px; padding: 0 18px; border-radius: 12px; border: none; background: var(--color-primary); color: var(--white); font-weight: 700; font-size: 14px; outline: 2px solid var(--cta-blue); outline-offset: 2px;">Foco</button>
+          <button style="height: 44px; padding: 0 18px; border-radius: 12px; border: none; background: var(--color-primary); opacity: .7; color: var(--white); font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px;">{{ spinner }}Cargando</button>
+          <button disabled style="height: 44px; padding: 0 18px; border-radius: 12px; border: none; background: var(--gray-200); color: var(--muted-foreground); font-weight: 700; font-size: 14px;">Deshabilitado</button>
+          <button style="height: 44px; padding: 0 18px; border-radius: 12px; border: none; background: var(--mint-600); color: var(--white); font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 6px;"><i class="icon-check" style="font-size: 16px;"></i>Listo</button>
+        </div>
+      </div>
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">Campos</span>
+        <label style="display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 13px; font-weight: 600;">Nombre completo</span><input value="Nicolás Rivas" readonly style="height: 48px; border-radius: 12px; border: 1px solid var(--border-strong); padding: 0 14px; font-size: 15px; font-family: inherit; color: var(--foreground);"></label>
+        <label style="display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 13px; font-weight: 600;">Teléfono</span><input value="8909" readonly aria-invalid="true" style="height: 48px; border-radius: 12px; border: 1.5px solid var(--danger); padding: 0 14px; font-size: 15px; font-family: inherit; color: var(--foreground);"><span style="font-size: 12px; color: var(--danger-700, #a33a2a);">Escribe los 8 dígitos de tu número.</span></label>
+        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+          <span style="display: flex; align-items: center; gap: 8px; font-size: 14px;"><span style="width: 22px; height: 22px; border-radius: 6px; background: var(--color-primary); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 14px;"><i class="icon-check"></i></span>Checkbox</span>
+          <span style="display: flex; align-items: center; gap: 8px; font-size: 14px;"><span style="width: 44px; height: 26px; border-radius: 999px; background: var(--mint-500); display: flex; align-items: center; justify-content: flex-end; padding: 3px; box-sizing: border-box;"><span style="width: 20px; height: 20px; border-radius: 50%; background: var(--white);"></span></span>Toggle</span>
+          <span style="display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 12px; border-radius: 12px; border: 1px solid var(--border-strong); font-size: 14px;"><i class="icon-calendar" style="font-size: 16px; color: var(--muted-foreground);"></i>14 oct 2026</span>
+        </div>
+      </div>
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">Badges</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <sc-for list="{{ badges }}" as="bd" hint-placeholder-count="7">
+            <span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: {{ bd.bg }}; color: {{ bd.fg }};">{{ bd.t }}</span>
+          </sc-for>
+        </div>
+        <span style="font-size: 12px; color: var(--muted-foreground);">Siempre con texto; el color nunca es el único indicador.</span>
+      </div>
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">Estados</span>
+        <div style="display: flex; gap: 10px; align-items: center;"><span style="width: 36px; height: 36px; border-radius: 10px; background: var(--gray-100);"></span><span style="flex: 1; display: flex; flex-direction: column; gap: 6px;"><span style="height: 10px; width: 70%; border-radius: 6px; background: var(--gray-100);"></span><span style="height: 8px; width: 45%; border-radius: 6px; background: var(--gray-100);"></span></span><span style="font-size: 12px; color: var(--muted-foreground);">Skeleton</span></div>
+        <div style="display: flex; gap: 8px; padding: 10px 12px; border-radius: 12px; background: var(--mint-50); font-size: 13px;"><i class="icon-circle-check" style="font-size: 16px; color: var(--mint-600);"></i>Éxito: qué pasó y qué sigue</div>
+        <div style="display: flex; gap: 8px; padding: 10px 12px; border-radius: 12px; background: var(--warning-bg); font-size: 13px;"><i class="icon-triangle-alert" style="font-size: 16px; color: var(--warning-700, #92560a);"></i>Advertencia: acción recomendada</div>
+        <div style="display: flex; gap: 8px; padding: 10px 12px; border-radius: 12px; background: var(--danger-bg); font-size: 13px;"><i class="icon-circle-alert" style="font-size: 16px; color: var(--danger-700, #a33a2a);"></i>Error empático con reintento</div>
+        <div style="display: flex; gap: 8px; padding: 10px 12px; border-radius: 12px; border: 1px dashed var(--border-strong); font-size: 13px; color: var(--muted-foreground);"><i class="icon-inbox" style="font-size: 16px;"></i>Vacío: explicación + CTA</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;demoState&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;normal&quot;,&quot;cargando&quot;,&quot;vacio&quot;,&quot;error&quot;],&quot;default&quot;:&quot;normal&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Prototipo&quot;}}">
+class Component extends DCLogic {
+  state = { route: 'inicio', stack: [], device: 'movil', who: 'yo', motivo: '', metodo: 'video', kind: 'medico', submitting: false, error: '', sheet: null, toast: null,
+    cat: 'Todos', target: null, dayIdx: 1, slot: null, cita: null, product: 'lab', qty: 1, cart: [], moodTab: 'hoy', mood: null, moodSaved: false,
+    srvTab: 'todos', favs: { farmacias: true }, expTab: 'ficha', ordTab: 'curso', exito: null, showTiempos: false, retried: false };
+  scrollRef = React.createRef();
+  componentDidUpdate(_, ps) { if (ps.route !== this.state.route && this.scrollRef.current) this.scrollRef.current.scrollTop = 0; }
+  componentWillUnmount() { clearTimeout(this.t1); clearTimeout(this.t2); }
+  go(r, extra) { this.setState(s => ({ route: r, stack: [...s.stack, s.route], sheet: null, ...(extra || {}) })); }
+  tab(r, extra) { this.setState({ route: r, stack: [], sheet: null, ...(extra || {}) }); }
+  back() { this.setState(s => { const st = [...s.stack]; return { route: st.pop() || 'inicio', stack: st }; }); }
+  toast(msg) { clearTimeout(this.t2); this.setState({ toast: msg }); this.t2 = setTimeout(() => this.setState({ toast: null }), 2200); }
+  startForm(kind) { this.go('form', { kind, motivo: '', error: '', submitting: false, who: 'yo', metodo: 'video' }); }
+  submit() {
+    if (!this.state.motivo.trim()) { this.setState({ error: 'Cuéntanos brevemente qué sientes para asignarte al profesional adecuado.' }); return; }
+    this.setState({ submitting: true, error: '' });
+    this.t1 = setTimeout(() => this.setState(s => ({ submitting: false, route: 'conectando', stack: [...s.stack, s.route] })), 1200);
+  }
+  seg(items, cur, set) { return items.map(([id, label, icon]) => { const on = cur === id; return { label, icon, on, onClick: () => set(id), bg: on ? 'var(--white)' : 'transparent', fg: on ? 'var(--foreground)' : 'var(--muted-foreground)', shadow: on ? 'var(--shadow-sm)' : 'none' }; }); }
+
+  renderVals() {
+    const st = this.state, r = st.route, B = '1px solid var(--border)', SEL = '2px solid var(--color-primary)';
+    const demo = this.props.demoState ?? 'normal';
+    const ds = st.retried ? 'normal' : demo;
+    const OK = ['var(--mint-50)', 'var(--mint-700)'], WARN = ['var(--warning-bg)', 'var(--warning-700, #92560a)'], INFO = ['var(--blue-50)', 'var(--navy-800)'], DANGER = ['var(--danger-bg)', 'var(--danger-700, #a33a2a)'], N = ['var(--gray-100)', 'var(--muted-foreground)'];
+    const usd = n => 'US$' + n.toFixed(2);
+    const tabs = ['inicio', 'consultas', 'servicios', 'expediente', 'ordenes'];
+    const g = (to, extra) => () => this.go(to, extra);
+    const spinner = React.createElement('span', { 'aria-hidden': true, style: { width: 16, height: 16, borderRadius: '50%', border: '2px solid rgba(255,255,255,0.4)', borderTopColor: '#fff', display: 'inline-block', animation: 'emdspin .8s linear infinite' } });
+
+    const nav = [['inicio', 'Inicio', 'house'], ['consultas', 'Consultas', 'stethoscope'], ['servicios', 'Servicios', 'layout-grid'], ['expediente', 'Expediente', 'clipboard-list'], ['ordenes', 'Órdenes', 'receipt']]
+      .map(([id, label, icon]) => { const on = r === id; return { label, icon, current: on ? 'page' : undefined, onClick: () => this.tab(id), color: on ? 'var(--color-primary)' : 'var(--muted-foreground)', pill: on ? 'var(--mint-100)' : 'transparent', weight: on ? 700 : 500 }; });
+
+    const allDocs = [
+      { i: 'NI', name: 'Dr. Nicolás Ibáñez', spec: 'Fisioterapia', cat: 'Fisioterapia', place: 'Medlab, Managua', km: '6.3 km', rating: '5.0', p: 33, o: 40 },
+      { i: 'MM', name: 'Dra. Marcela Miranda', spec: 'Ginecología y obstetricia', cat: 'Ginecología', place: 'Clínica San Juan', km: '6.4 km', rating: '4.9', p: 26, o: 35 },
+      { i: 'EF', name: 'Dr. Emanuel Flores', spec: 'Medicina interna', cat: 'Medicina interna', place: 'Clínica Central', km: '3.1 km', rating: '4.8', p: 30, o: 38 },
+      { i: 'LS', name: 'Dra. Lucía Solís', spec: 'Odontología', cat: 'Odontología', place: 'Clínica Dental Sonríe', km: '2.2 km', rating: '4.9', p: 20, o: 30 },
+      { i: 'RP', name: 'Dr. Ramón Pérez', spec: 'Pediatría', cat: 'Pediatría', place: 'Hospital Infantil', km: '8.0 km', rating: '4.7', p: 28, o: 34 },
+    ];
+    const products = {
+      lab: { name: 'CA 19-9', desc: 'Examen de laboratorio en sangre · Easylab', icon: 'flask-conical', p: 31.5, o: 35 },
+      ibu: { name: 'Ibuprofeno 600 mg', desc: 'Caja de 10 tabletas · Farmacia Hermanos Guerrero', icon: 'pill', p: 4.5, o: 5 },
+    };
+    const prod0 = products[st.product];
+    const prod = { ...prod0, price: usd(prod0.p), old: usd(prod0.o), save: 'Ahorras ' + Math.round((1 - prod0.p / prod0.o) * 100) + ' % con tu plan' };
+
+    const titles = {
+      form: [st.kind === 'psico' ? 'Consulta psicológica' : 'Consulta médica', st.kind === 'psico' ? 'Con un psicólogo certificado' : 'Médico general 24/7'],
+      conectando: ['Conectando', st.metodo === 'video' ? 'Videollamada' : 'Chat'],
+      especialistas: ['Especialistas', 'Agenda presencial con descuento'],
+      agenda: ['Elige un horario', st.target ? st.target.name : ''],
+      farmacia: ['Farmacias', 'Descuento con tu plan'],
+      producto: ['Detalle', st.product === 'lab' ? 'Easylab' : 'Farmacia'],
+      carrito: ['Tu carrito', ''],
+      animo: ['Estado de ánimo', 'Hoy, martes 13 de octubre'],
+      detalle: ['Detalle de la consulta', '24 sep 2026'],
+      mensajes: ['Mensajes', 'Médicos y soporte'],
+      cuenta: ['Mi cuenta', 'Nicolás Rivas'],
+    };
+    const hasBack = !tabs.includes(r) && r !== 'exito';
+    const [subTitle, subCaption] = titles[r] || ['', ''];
+
+    const srvAll = [
+      ['farmacias', 'Farmacias', 'Descuentos y delivery', 'pill', g('farmacia')],
+      ['easylab', 'Easylab', 'Laboratorio, también a domicilio', 'flask-conical', g('producto', { product: 'lab', qty: 1 })],
+      ['especialistas', 'Especialistas', 'Agenda con descuento', 'user-round-search', g('especialistas', { cat: 'Todos' })],
+      ['clinicas', 'Clínicas', 'Imagen y exámenes con descuento', 'hospital', g('agenda', { target: { name: 'Medlab · Clínica', p: 0 }, slot: null, dayIdx: 1 })],
+      ['fisioterapia', 'Fisioterapia', 'Descuentos en sesiones', 'activity', g('especialistas', { cat: 'Fisioterapia' })],
+      ['odontologia', 'Odontología', 'Descuentos importantes', 'smile-plus', g('especialistas', { cat: 'Odontología' })],
+      ['wellness', 'Wellness', 'Yoga, spa y más', 'flower-2', () => this.toast('Wellness se abre igual que hoy')],
+      ['medita', 'Medita', 'Respiración guiada', 'wind', () => this.toast('Medita se abre igual que hoy')],
+      ['paquetes', 'Paquetes', 'Chequeos completos', 'package', () => this.toast('Paquetes se abre igual que hoy')],
+    ];
+    const srvMap = ([id, name, sub, icon, onClick]) => { const fav = !!st.favs[id]; return { id, name, sub, icon, onClick, favColor: fav ? 'var(--danger)' : 'var(--subtle-foreground)', favLabel: fav ? 'Quitar de favoritos' : 'Agregar a favoritos', onFav: () => this.setState(s => ({ favs: { ...s.favs, [id]: !s.favs[id] } })) }; };
+    const srvList = srvAll.map(srvMap).filter(s => st.srvTab === 'todos' || st.favs[s.id]);
+    const srvTop = srvAll.slice(0, 4).map(srvMap);
+
+    const cats = ['Todos', 'Medicina interna', 'Ginecología', 'Dermatología', 'Pediatría', 'Cardiología', 'Fisioterapia', 'Odontología'].map(label => { const on = st.cat === label; return { label, onClick: () => this.setState({ cat: label }), border: on ? '1.5px solid var(--color-primary)' : B, bg: on ? 'var(--color-primary)' : 'var(--white)', fg: on ? 'var(--white)' : 'var(--foreground)' }; });
+    const docs = allDocs.filter(d => st.cat === 'Todos' || d.cat === st.cat).map(d => ({ ...d, price: usd(d.p), old: usd(d.o), save: 'Ahorras ' + usd(d.o - d.p), onClick: g('agenda', { target: d, slot: null, dayIdx: 1 }) }));
+
+    const dayDefs = [['Mar', 13], ['Mié', 14], ['Jue', 15], ['Vie', 16], ['Sáb', 17], ['Dom', 18], ['Lun', 19]];
+    const days = dayDefs.map(([d, n], i) => { const on = st.dayIdx === i; return { d, n, on, onClick: () => this.setState({ dayIdx: i, slot: null }), border: on ? SEL : B, bg: on ? 'var(--color-primary)' : 'var(--white)', fg: on ? 'var(--white)' : 'var(--foreground)' }; });
+    const isSunday = st.dayIdx === 5;
+    const mkSlot = t => { const on = st.slot === t; return { t, on, onClick: () => this.setState({ slot: t }), border: on ? SEL : B, bg: on ? 'var(--blue-50)' : 'var(--white)', fg: 'var(--foreground)' }; };
+    const slotGroups = isSunday ? [] : [{ label: 'Mañana', slots: ['8:00 AM', '8:30 AM', '9:00 AM', '10:30 AM', '11:00 AM'].map(mkSlot) }, { label: 'Tarde', slots: ['1:30 PM', '2:00 PM', '3:00 PM', '4:30 PM'].map(mkSlot) }];
+    const dayTxt = dayDefs[st.dayIdx][0].toLowerCase() + ' ' + dayDefs[st.dayIdx][1] + ' oct';
+
+    const moodDefs = [['feliz', 'Feliz', 'laugh'], ['normal', 'Normal', 'smile'], ['estresado', 'Estresado', 'annoyed'], ['triste', 'Triste', 'frown'], ['enojado', 'Enojado', 'angry']];
+    const moods = moodDefs.map(([id, label, icon]) => { const on = st.mood === id; return { label, icon, on, onClick: () => this.setState({ mood: id, moodSaved: false }), border: on ? SEL : B, bg: on ? 'var(--blue-50)' : 'var(--white)' }; });
+    const curMood = moodDefs.find(m => m[0] === st.mood);
+    const low = ['estresado', 'triste', 'enojado'].includes(st.mood);
+
+    const cartCount = st.cart.reduce((a, c) => a + c.qty, 0);
+    const cartItems = st.cart.map((c, i) => ({ name: products[c.id].name, icon: products[c.id].icon, qty: c.qty, total: usd(products[c.id].p * c.qty), border: i ? B : 'none' }));
+    const cartTotal = usd(st.cart.reduce((a, c) => a + products[c.id].p * c.qty, 0));
+    const addToCart = () => this.setState(s => { const ex = s.cart.find(c => c.id === s.product); return { cart: ex ? s.cart.map(c => c.id === s.product ? { ...c, qty: c.qty + s.qty } : c) : [...s.cart, { id: s.product, qty: s.qty }] }; });
+
+    const ordAll = [
+      { type: 'Farmacia', icon: 'pill', prov: 'Farmacia Hermanos Guerrero', date: '18 ene 2025', status: 'En curso' },
+      { type: 'Laboratorio clínico', icon: 'flask-conical', prov: 'Golab by Medlab', date: '3 jul 2024', status: 'Completada' },
+      { type: 'Farmacia', icon: 'pill', prov: 'Farmacia Centroamericana Villa Fontana', date: '6 may 2024', status: 'En curso' },
+      { type: 'Farmacia', icon: 'pill', prov: 'Farmacia Centroamericana Villa Fontana', date: '29 mar 2024', status: 'Completada' },
+    ];
+    const ordenes = ordAll.filter(o => (st.ordTab === 'curso') === (o.status === 'En curso')).map(o => ({ ...o, chipBg: o.status === 'En curso' ? INFO[0] : OK[0], chipFg: o.status === 'En curso' ? INFO[1] : OK[1], onClick: () => this.toast('Abriendo factura en PDF') }));
+
+    const ex = {
+      cita: { title: 'Cita agendada', body: (st.target ? st.target.name : '') + ', ' + dayTxt + ' a las ' + (st.slot || '') + '. La verás en Consultas.' },
+      pedido: { title: 'Pedido confirmado', body: 'Puedes seguir el estado de tu pedido en Órdenes.' },
+      ficha: { title: 'Ficha actualizada', body: 'Tus médicos verán la información más reciente en tu próxima consulta.' },
+    }[st.exito] || { title: '', body: '' };
+
+    const P = { P0: DANGER, P1: WARN, P2: N };
+    const diag = [
+      ['Inicio', 'Encabezado menta, menú y carrito compiten. Cuatro tarjetas ilustradas con el mismo peso. Servicios queda tapado por la barra.', 'Una acción principal (médico ahora), psicología y ánimo como secundarias, plan visible y 4 servicios.', 'inicio'],
+      ['Consulta médica', '"¡Ya casi estamos contigo!" ocupa media pantalla y "¿Para quién?" queda bajo el teclado.', 'Para quién primero, motivo con ejemplo y validación, método, CTA abajo y acceso a urgencias.', 'formMedico'],
+      ['Conectando', 'Fondo menta saturado, aviso que tapa el estado, "Permiso otorgado" dos veces sin decir cuál.', 'Lista clara de cámara, micrófono y conexión, tiempo estimado y cancelar con confirmación.', 'conectando'],
+      ['Consulta psicológica', 'El botón dice "Empezar consulta médica"; el spinner flota sobre el formulario; aviso de ficha en gris pequeño.', 'CTA "Iniciar consulta psicológica", carga dentro del botón y aviso legible con enlace a la ficha.', 'formPsico'],
+      ['Especialistas', 'Íconos 3D de estilos mixtos, precio tachado en C$ sin ahorro, tarjeta atenuada que parece deshabilitada.', 'Chips de especialidad, ahorro en US$, "Ver horarios" y estado vacío por especialidad.', 'especialistas'],
+      ['Estado de ánimo', 'Emoji 3D grises de bajo contraste y "No hay datos existentes".', 'Íconos outline con etiqueta, guardar, sugerencia de psicología y estado vacío útil.', 'animo'],
+      ['Farmacias', 'El logo ocupa un tercio de la pantalla; búsqueda con ícono naranja fuera de paleta.', 'Búsqueda y lista de farmacias con distancia y descuento.', 'farmacia'],
+      ['Producto Easylab', 'Imagen gris de relleno; dos CTAs con el mismo peso; stepper pequeño. La descripción "perfil hormonal" no corresponde a CA 19-9.', 'Un CTA principal, ahorro visible, stepper de 44 px. Pedir al equipo médico revisar descripciones.', 'producto'],
+      ['Agenda Medlab', 'Encabezado rojo (color de error) y teclado abierto sin campo de texto.', 'Encabezado claro, días grandes, horarios por mañana y tarde, CTA con resumen.', 'agenda'],
+      ['Servicios', 'Nueve tiles saturados con ilustraciones 3D; "Ver menos ×" confunde.', 'Pestaña Servicios con íconos outline, descripción de beneficio y favoritos.', 'servicios'],
+      ['Detalle de consulta', 'Buena base. Tiempos técnicos visibles y dos botones "Descargar PDF".', 'Resumen arriba, receta con PDF, tiempos plegados y un solo PDF de resumen.', 'detalle'],
+      ['Órdenes', '"Tu Factura >" igual en todas; estado en texto gris; fechas con formato técnico.', 'Badge de estado, filtro En curso / Completadas y "Ver factura" secundario.', 'ordenes'],
+    ].map(([screen, prob, fix, to], i) => ({ n: String(i + 1).padStart(2, '0'), screen, prob, fix, border: i ? B : 'none', open: () => {
+      if (to === 'formMedico') return this.tab('inicio', {}) || this.startForm('medico');
+      if (to === 'formPsico') return this.startForm('psico');
+      if (to === 'conectando') return this.go('conectando', { metodo: 'video', kind: 'medico' });
+      if (to === 'agenda') return this.go('agenda', { target: { name: 'Medlab · Clínica' }, slot: null, dayIdx: 1 });
+      if (to === 'producto') return this.go('producto', { product: 'lab', qty: 1 });
+      if (tabs.includes(to)) return this.tab(to);
+      return this.go(to);
+    } }));
+
+    const plan = [
+      ['Design system', 'Tokens EasyMD, botones navy con contraste AA, campos con label y error, badges, skeleton y estados.'],
+      ['Navegación e Inicio', 'Cinco pestañas con etiqueta, Expediente nuevo, mensajes y carrito en el encabezado, plan visible.'],
+      ['Consulta médica y psicológica', 'Formulario en un paso con validación, carga en el botón, conexión clara y cancelar con confirmación.'],
+      ['Expediente y detalle', 'Ficha médica, historial clínico, recetas y resultados en un solo lugar.'],
+      ['Servicios y compras', 'Especialistas, agenda, farmacias, producto, carrito, órdenes y ánimo con el mismo sistema.'],
+      ['Estados y verificación', 'Carga, vacío, error y éxito en cada lista; prueba en móvil y tablet; checklist funcional.'],
+    ].map(([t, d], i) => ({ n: i + 1, t, d }));
+
+    const mapa = [
+      ['Menú hamburguesa', 'Avatar en Inicio → Mi cuenta'],
+      ['Carrito', 'Encabezado de Inicio, Servicios y producto'],
+      ['Búsqueda', 'Inicio, Especialistas y Farmacias'],
+      ['Consulta médica 24/7', 'Inicio (principal) y Consultas'],
+      ['Consultas psicológicas ilimitadas', 'Inicio y Consultas'],
+      ['Directorio de especialistas', 'Consultas y Servicios'],
+      ['Estado de ánimo', 'Tarjeta en Inicio'],
+      ['Servicios EasyMD (9)', 'Pestaña Servicios'],
+      ['Pestaña Favoritos', 'Servicios → Favoritos'],
+      ['Pestaña Consultas', 'Pestaña Consultas'],
+      ['Pestaña Órdenes', 'Pestaña Órdenes'],
+      ['Pestaña Mensajes', 'Ícono en el encabezado de Inicio'],
+      ['Actualiza tu ficha médica', 'Expediente → Ficha'],
+      ['Detalle de consulta y recetas', 'Expediente → Historial y Recetas'],
+      ['Facturas', 'Órdenes → Ver factura'],
+      ['Nuevo', 'Expediente, plan, familia y urgencias'],
+    ].map(([antes, ahora], i) => ({ antes, ahora, border: i ? B : 'none', icon: antes === 'Nuevo' ? 'sparkles' : 'circle-check', color: antes === 'Nuevo' ? 'var(--cta-blue)' : 'var(--mint-600)' }));
+
+    const checklist = [
+      'Las 16 funciones actuales tienen un lugar en la nueva navegación.',
+      'Botones principales en navy: contraste AA sobre blanco.',
+      'Objetivos táctiles de 44 × 44 px o más.',
+      'Campos con label visible, validación y mensaje de error útil.',
+      'Foco visible en botones y campos para teclado.',
+      'Carga, vacío, error y éxito en Expediente, Órdenes y Mensajes.',
+      'Precios en US$ con ahorro explícito.',
+      'Diseño fluido verificado en móvil (390 px) y tablet (744 px).',
+    ];
+
+    const pick = (id, v) => () => this.setState({ [id]: v });
+    return {
+      diag, plan, mapa, checklist, spinner,
+      devices: [['movil', 'Móvil', 'smartphone'], ['tablet', 'Tablet', 'tablet']].map(([id, label, icon]) => { const on = st.device === id; return { label, icon, onClick: pick('device', id), bg: on ? 'var(--color-primary)' : 'transparent', fg: on ? 'var(--white)' : 'var(--foreground)' }; }),
+      frameW: st.device === 'tablet' ? '744px' : '390px', frameH: st.device === 'tablet' ? '980px' : '844px',
+      scrollRef: this.scrollRef, nav, showNav: tabs.includes(r), hasBack, subTitle, subCaption, back: () => this.back(),
+      showCartTop: ['farmacia', 'producto', 'especialistas'].includes(r), hasCart: cartCount > 0, cartEmpty: cartCount === 0, cartCount,
+      isInicio: r === 'inicio', isConsultas: r === 'consultas', isForm: r === 'form', isConectando: r === 'conectando', isServicios: r === 'servicios',
+      isEspecialistas: r === 'especialistas', isAgenda: r === 'agenda', isFarmacia: r === 'farmacia', isProducto: r === 'producto', isCarrito: r === 'carrito',
+      isAnimo: r === 'animo', isExpediente: r === 'expediente', isDetalle: r === 'detalle', isOrdenes: r === 'ordenes', isMensajes: r === 'mensajes', isCuenta: r === 'cuenta', isExito: r === 'exito',
+      goCuenta: g('cuenta'), goMensajes: g('mensajes'), goCarrito: g('carrito'), goServicios: () => this.tab('servicios'), goAnimo: g('animo'), goEspecialistas: g('especialistas', { cat: 'Todos' }),
+      goHistorial: () => this.tab('expediente', { expTab: 'historial' }), goFicha: g('expediente', { expTab: 'ficha' }), goInicio: () => this.tab('inicio'),
+      openDetalle: g('detalle'), startMedico: () => this.startForm('medico'), startPsico: () => this.startForm('psico'),
+      animoSub: st.moodSaved && curMood ? 'Hoy: ' + curMood[1] : 'Registra cómo te sientes',
+      srvTop, srvList, srvEmpty: srvList.length === 0, srvTabs: this.seg([['todos', 'Todos'], ['favs', 'Favoritos']], st.srvTab, v => this.setState({ srvTab: v })),
+      hasCita: !!st.cita, noCita: !st.cita, cita: st.cita || {},
+      formBadge: st.kind === 'psico' ? 'Ilimitada en tu plan' : 'Incluida en tu plan · menos de 5 min',
+      who: st.who, onWho: e => this.setState({ who: e.target.value }), motivo: st.motivo, onMotivo: e => this.setState({ motivo: e.target.value, error: '' }),
+      motivoPh: st.kind === 'psico' ? 'Ej.: me siento ansioso y no duermo bien' : 'Ej.: dolor de cabeza y fiebre desde ayer',
+      hasError: !!st.error, error: st.error, motivoBorder: st.error ? '1.5px solid var(--danger)' : '1px solid var(--border-strong)',
+      metodos: this.seg([['video', 'Videollamada', 'video'], ['chat', 'Chat', 'message-square']], st.metodo, v => this.setState({ metodo: v })),
+      submit: () => this.submit(), submitting: st.submitting, submitOpacity: st.submitting ? 0.7 : 1,
+      submitLabel: st.submitting ? 'Preparando tu consulta…' : (st.kind === 'psico' ? 'Iniciar consulta psicológica' : 'Iniciar consulta médica'),
+      conIcon: st.metodo === 'video' ? 'video' : 'message-square', conWho: st.kind === 'psico' ? 'psicólogo' : 'médico',
+      checks: [['camera', 'Cámara'], ['mic', 'Micrófono'], ['wifi', 'Conexión estable']].map(([icon, label], i) => ({ icon, label, border: i ? B : 'none' })),
+      cats, docs, docsEmpty: docs.length === 0,
+      days, slotGroups, noSlots: isSunday, noSlot: !st.slot, citaBg: st.slot ? 'var(--color-primary)' : 'var(--gray-200)', citaFg: st.slot ? 'var(--white)' : 'var(--muted-foreground)',
+      citaLabel: st.slot ? 'Confirmar · ' + dayTxt + ', ' + st.slot : 'Elige un horario',
+      confirmCita: () => st.slot && this.setState({ route: 'exito', exito: 'cita', stack: [], cita: { name: st.target.name, when: dayTxt + ' · ' + st.slot } }),
+      farmacias: [['Farmacia Hermanos Guerrero', '4.5 km'], ['Farmacia Centroamericana Villa Fontana', '5.2 km']].map(([name, km]) => ({ name, km, onClick: g('producto', { product: 'ibu', qty: 1 }) })),
+      prod, qty: st.qty, qtyMinus: () => this.setState(s => ({ qty: Math.max(1, s.qty - 1) })), qtyPlus: () => this.setState(s => ({ qty: Math.min(10, s.qty + 1) })),
+      addCart: () => { addToCart(); this.toast('Agregado al carrito'); }, comprarAhora: () => { addToCart(); this.go('carrito'); },
+      cartItems, cartTotal, pagar: () => this.setState({ route: 'exito', exito: 'pedido', stack: [], cart: [] }),
+      moodTabs: this.seg([['hoy', 'Hoy'], ['semana', 'Esta semana']], st.moodTab, v => this.setState({ moodTab: v })),
+      moodHoy: st.moodTab === 'hoy', moodSemana: st.moodTab === 'semana', moods, noMood: !st.mood, moodSaved: st.moodSaved, noMoodSaved: !st.moodSaved,
+      moodCanSave: !st.moodSaved, moodSuggest: st.moodSaved && low, saveBg: st.mood ? 'var(--color-primary)' : 'var(--gray-200)', saveFg: st.mood ? 'var(--white)' : 'var(--muted-foreground)',
+      saveMood: () => st.mood && this.setState({ moodSaved: true }), moodIcon: curMood ? curMood[2] : 'smile', moodLabel: curMood ? curMood[1] : '', moodToHoy: () => this.setState({ moodTab: 'hoy' }),
+      expTabs: this.seg([['ficha', 'Ficha'], ['historial', 'Historial'], ['recetas', 'Recetas'], ['resultados', 'Resultados']], st.expTab, v => this.setState({ expTab: v })),
+      expFicha: st.expTab === 'ficha', expHistorial: st.expTab === 'historial', expRecetas: st.expTab === 'recetas', expResultados: st.expTab === 'resultados',
+      ficha: [['droplet', 'Tipo de sangre', 'O+'], ['triangle-alert', 'Alergias', 'Penicilina'], ['heart-pulse', 'Condiciones', 'Ninguna registrada'], ['pill', 'Medicamentos actuales', 'Ninguno'], ['ruler', 'Estatura y peso', '1.75 m · 78 kg'], ['phone', 'Contacto de emergencia', 'Ana Rivas']].map(([icon, k, v], i) => ({ icon, k, v, border: i ? B : 'none' })),
+      editFicha: () => this.setState({ route: 'exito', exito: 'ficha', stack: [] }),
+      historial: [['stethoscope', 'Medicina general', 'Dr. Emanuel Flores', '24 sep 2026', OK], ['brain', 'Psicología', 'Lic. Carla Méndez', '2 sep 2026', ['var(--color-wellness-soft)', 'var(--color-wellness)']], ['stethoscope', 'Medicina general', 'Dra. Ana Torres', '11 ago 2026', OK]]
+        .map(([icon, tipo, doc, fecha, c]) => ({ icon, tipo, doc, fecha, bg: c[0], fg: c[1], onClick: g('detalle') })),
+      recetas: [['Ibuprofeno 600 mg', 'Dr. Emanuel Flores · 24 sep 2026'], ['Loratadina 10 mg', 'Dra. Ana Torres · 11 ago 2026']].map(([med, meta]) => ({ med, meta, onClick: () => this.toast('Descargando receta en PDF') })),
+      resultados: [['CA 19-9', 'Golab by Medlab · 3 jul 2024'], ['Biometría hemática', 'Golab by Medlab · 3 jul 2024']].map(([name, meta]) => ({ name, meta, onClick: () => this.toast('Abriendo resultado en PDF') })),
+      detalle: [['Fecha', '24 sep 2026'], ['Hora', '5:14 PM'], ['Canal', 'Llamada'], ['Duración', '2 min']].map(([k, v]) => ({ k, v })),
+      showTiempos: st.showTiempos, tiemposLabel: st.showTiempos ? 'Ocultar registro de tiempos' : 'Ver registro de tiempos', toggleTiempos: () => this.setState(s => ({ showTiempos: !s.showTiempos })),
+      tiempos: [['Creada', '4:14 PM'], ['Iniciada', '4:15 PM'], ['Finalizada', '4:18 PM'], ['Tipo', 'General']].map(([k, v], i) => ({ k, v, border: i ? B : 'none' })),
+      dlReceta: () => this.toast('Descargando receta en PDF'), dlResumen: () => this.toast('Descargando resumen en PDF'),
+      ordTabs: this.seg([['curso', 'En curso'], ['completadas', 'Completadas']], st.ordTab, v => this.setState({ ordTab: v })),
+      ordenes, isLoading: ds === 'cargando', isError: ds === 'error', isEmpty: ds === 'vacio', isNormal: ds === 'normal',
+      ordShow: ds === 'normal' && ordenes.length > 0, ordEmpty: ds === 'vacio' || (ds === 'normal' && ordenes.length === 0), ordEmptyTitle: st.ordTab === 'curso' ? 'No tienes órdenes en curso' : 'Aún no tienes órdenes completadas',
+      skel: [1, 2, 3], retry: () => { this.setState({ retried: true }); this.toast('Datos cargados'); },
+      convs: [['life-buoy', 'Soporte EasyMD', '¿En qué te podemos ayudar?', 'Hoy'], ['stethoscope', 'Dr. Emanuel Flores', 'Tu receta ya está en tu expediente.', '24 sep']].map(([icon, name, last, when]) => ({ icon, name, last, when, onClick: () => this.toast('La conversación se abre igual que hoy') })),
+      familia: [['NR', 'Nicolás'], ['AR', 'Ana'], ['MR', 'Mateo']].map(([i, n]) => ({ i, n })), addFamiliar: () => this.toast('Agregar familiar se abre igual que hoy'),
+      ajustes: [['heart', 'Favoritos', () => this.tab('servicios', { srvTab: 'favs' })], ['user-round', 'Datos personales', () => this.toast('Se abre igual que hoy')], ['credit-card', 'Métodos de pago', () => this.toast('Se abre igual que hoy')], ['map-pin', 'Direcciones', () => this.toast('Se abre igual que hoy')], ['life-buoy', 'Ayuda y soporte', g('mensajes')], ['siren', 'Urgencias', () => this.setState({ sheet: 'urgencias' })]].map(([icon, label, onClick], i) => ({ icon, label, onClick, border: i ? B : 'none' })),
+      logout: () => this.toast('Cerrar sesión funciona igual que hoy'),
+      exito: ex,
+      hasToast: !!st.toast, toast: st.toast,
+      hasSheet: !!st.sheet, sheetCancelar: st.sheet === 'cancelar', sheetBeneficios: st.sheet === 'beneficios', sheetUrgencias: st.sheet === 'urgencias',
+      openCancelar: () => this.setState({ sheet: 'cancelar' }), openBeneficios: () => this.setState({ sheet: 'beneficios' }), openUrgencias: () => this.setState({ sheet: 'urgencias' }), closeSheet: () => this.setState({ sheet: null }),
+      confirmCancel: () => { this.tab('inicio'); this.toast('Consulta cancelada'); },
+      beneficios: [['stethoscope', 'Médico 24/7', 'Incluido', OK], ['brain', 'Psicología', 'Ilimitada', OK], ['pill', 'Farmacia', 'Descuento', INFO], ['flask-conical', 'Laboratorio', 'Descuento', INFO], ['scan', 'Imagen', 'Descuento', INFO], ['smile-plus', 'Odontología', 'Descuento', INFO]]
+        .map(([icon, label, tag, c]) => ({ icon, label, tag, chipBg: c[0], chipFg: c[1] })),
+      swatches: [['var(--color-primary)', 'Navy', 'Texto y CTA'], ['var(--mint-500)', 'Menta', 'Marca y activo'], ['var(--cta-blue)', 'Azul', 'Enlaces y foco'], ['var(--app-bg)', 'Fondo', 'Pantallas'], ['var(--warning)', 'Ámbar', 'Advertencia'], ['var(--danger)', 'Rojo', 'Error y destruir']].map(([v, n, use]) => ({ v, n, use })),
+      badges: [['Plan activo', OK], ['Incluido', OK], ['Descuento', INFO], ['En curso', INFO], ['Pendiente', WARN], ['Cancelada', DANGER], ['Verificado', N]].map(([t, c]) => ({ t, bg: c[0], fg: c[1] })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

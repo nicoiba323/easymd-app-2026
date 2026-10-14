@@ -1,0 +1,89 @@
+{
+  "nav": { "inicio": "Inicio", "consultas": "Consultas", "servicios": "Servicios", "expediente": "Expediente", "ordenes": "Órdenes" },
+  "a11y": { "back": "Regresar", "cart": "Carrito", "messages": "Mensajes", "search": "Buscar", "favAdd": "Agregar a favoritos", "favRemove": "Quitar de favoritos" },
+  "inicio": {
+    "greeting": "Hola, {name}",
+    "planBadge": "Plan activo",
+    "searchPh": "Busca un médico, examen o medicamento",
+    "medicoTitle": "Consulta médica", "medicoSub": "24/7 · menos de 5 min",
+    "psicoTitle": "Consulta psicológica", "psicoSub": "Ilimitada en tu plan",
+    "start": "Empezar",
+    "moodTitle": "¿Cómo te sientes hoy?", "moodSubEmpty": "Registra cómo te sientes", "moodSubSaved": "Hoy: {mood}",
+    "assistantTitle": "Asistente EasyMD", "soon": "Muy pronto",
+    "planTitle": "Qué incluye tu plan", "planSub": "Médico 24/7, psicología y descuentos",
+    "servicesTitle": "Servicios", "seeAll": "Ver todos",
+    "lastConsult": "Última consulta · {date}", "lastConsultSub": "{doctor} · Receta disponible"
+  },
+  "consultas": {
+    "medico": "Médico 24/7", "medicoSub": "Espera menor a 5 min",
+    "psico": "Psicología", "psicoSub": "Ilimitada",
+    "specialist": "Agenda con un especialista", "specialistSub": "Presencial, con descuento"
+  },
+  "form": {
+    "titleMedico": "Consulta médica", "subMedico": "Médico general 24/7",
+    "titlePsico": "Consulta psicológica", "subPsico": "Con un psicólogo certificado",
+    "badgeMedico": "Incluida en tu plan · menos de 5 min", "badgePsico": "Ilimitada en tu plan",
+    "who": "¿Para quién?", "reason": "¿Qué sientes?",
+    "reasonPhMedico": "Ej.: dolor de cabeza y fiebre desde ayer",
+    "reasonPhPsico": "Ej.: me siento ansioso y no duermo bien",
+    "method": "¿Cómo prefieres la consulta?", "video": "Videollamada", "chat": "Chat",
+    "ctaMedico": "Iniciar consulta médica", "ctaPsico": "Iniciar consulta psicológica",
+    "submitting": "Preparando tu consulta…",
+    "errorReason": "Cuéntanos brevemente qué sientes para asignarte al profesional adecuado."
+  },
+  "conectando": {
+    "title": "Buscando un {role} disponible", "eta": "Menos de 5 min",
+    "checks": ["Cámara", "Micrófono", "Conexión estable"],
+    "cancel": "Cancelar consulta",
+    "cancelSheetTitle": "¿Cancelar la consulta?", "cancelConfirm": "Sí, cancelar", "cancelKeep": "Seguir esperando",
+    "toastCancelled": "Consulta cancelada"
+  },
+  "especialistas": { "title": "Especialistas", "sub": "Agenda presencial con descuento", "seeSlots": "Ver horarios", "save": "Ahorras {amount}", "empty": "Aún no hay especialistas en {category}" },
+  "agenda": { "title": "Elige un horario", "morning": "Mañana", "afternoon": "Tarde", "noSlots": "No hay horarios este día", "ctaDisabled": "Elige un horario", "cta": "Confirmar · {day}, {time}" },
+  "producto": { "save": "Ahorras {pct} % con tu plan", "buy": "Comprar ahora", "add": "Agregar al carrito", "toastAdded": "Agregado al carrito" },
+  "carrito": { "title": "Tu carrito", "empty": "Tu carrito está vacío", "goServices": "Ir a Servicios", "pay": "Pagar {total}" },
+  "servicios": { "all": "Todos", "favs": "Favoritos", "favsEmpty": "Aún no tienes favoritos. Toca el corazón en un servicio." },
+  "animo": {
+    "title": "Estado de ánimo", "today": "Hoy", "week": "Esta semana",
+    "moods": { "feliz": "Feliz", "normal": "Normal", "estresado": "Estresado", "triste": "Triste", "enojado": "Enojado" },
+    "save": "Guardar", "suggest": "¿Quieres hablar con un psicólogo?", "weekEmpty": "Registra tu ánimo para ver tu semana"
+  },
+  "expediente": {
+    "tabs": ["Ficha", "Historial", "Recetas", "Resultados"],
+    "fields": ["Tipo de sangre", "Alergias", "Condiciones", "Medicamentos actuales", "Estatura y peso", "Contacto de emergencia"],
+    "update": "Actualizar ficha"
+  },
+  "detalle": { "title": "Detalle de la consulta", "showTimes": "Ver registro de tiempos", "hideTimes": "Ocultar registro de tiempos", "downloadSummary": "Descargar resumen en PDF" },
+  "ordenes": {
+    "inProgress": "En curso", "completed": "Completadas", "seeInvoice": "Ver factura",
+    "emptyInProgress": "No tienes órdenes en curso", "emptyCompleted": "Aún no tienes órdenes completadas",
+    "error": "No pudimos cargar tus órdenes", "retry": "Reintentar"
+  },
+  "documento": { "download": "Descargar PDF", "orderHome": "Pedir a domicilio", "askDoctor": "Consultar con un médico", "toast": "PDF descargado" },
+  "factura": { "download": "Descargar factura en PDF", "toast": "Factura descargada" },
+  "cuenta": {
+    "family": "Mi familia", "addFamily": "Agregar", "seePlan": "Ver qué incluye",
+    "settings": ["Favoritos", "Datos personales", "Métodos de pago", "Direcciones", "Preguntas frecuentes", "Ayuda y soporte", "Urgencias"],
+    "logout": "Cerrar sesión", "logoutSheet": "¿Cerrar sesión?"
+  },
+  "exito": {
+    "cita": { "title": "Cita agendada", "body": "{doctor}, {day} a las {time}. La verás en Consultas." },
+    "pedido": { "title": "Pedido confirmado", "body": "Puedes seguir el estado de tu pedido en Órdenes." },
+    "datos": { "title": "Datos guardados", "body": "Tus médicos verán la información actualizada." },
+    "tarjeta": { "title": "Tarjeta guardada", "body": "Ya puedes usarla en tus pagos." },
+    "direccion": { "title": "Dirección guardada", "body": "La verás al confirmar tus pedidos." },
+    "familiar": { "title": "Familiar agregado", "body": "Ya puedes pedir consultas para esta persona." },
+    "ficha": { "title": "Ficha actualizada", "body": "Tus médicos verán la información más reciente en tu próxima consulta." },
+    "cta": "Volver al inicio"
+  },
+  "errors": {
+    "generic": "Algo salió mal de nuestro lado. Intenta de nuevo en un momento.",
+    "offline": "Parece que no tienes conexión. Revisa tu internet e intenta de nuevo."
+  },
+  "concierge": {
+    "features": ["Confirma tu receta y pide la entrega en un toque", "Te explica tus resultados en palabras simples", "Agenda tus seguimientos y te recuerda tus citas", "Te recuerda tomar tus medicamentos"],
+    "notify": "Avísame cuando esté listo", "toastOn": "Te avisaremos cuando esté listo", "toastOff": "Aviso desactivado"
+  },
+  "medita": { "breathing": "Inhala… y exhala", "hintIdle": "Elige un ejercicio y toca Empezar.", "hintActive": "Sigue el círculo: crece al inhalar, se achica al exhalar.", "start": "Empezar", "stop": "Terminar" },
+  "cupon": { "intro": "Muestra este código al pagar. Es personal y no tiene costo.", "note": "Válido mientras tu plan esté activo." }
+}

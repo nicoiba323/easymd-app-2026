@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/tokens/base.css">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static@0.460.0/font/lucide.css">
+  <script src="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--gray-100); color: var(--foreground); }
+    a { color: var(--cta-blue); } a:hover { color: var(--cta-blue-hover); }
+    [class^="icon-"]::before { line-height: 1; }
+  </style>
+</helmet>
+
+<div style="min-height: 100vh; padding: 40px 24px 64px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 48px; justify-content: center; align-items: flex-start;">
+
+  <sc-if value="{{ showAudit }}" hint-placeholder-val="{{ true }}">
+  <div style="flex: 1 1 520px; max-width: 760px; display: flex; flex-direction: column; gap: 28px;">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <img src="assets/easymd-icon.png" alt="EasyMD" style="width: 40px; height: 40px;">
+      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-foreground);">Auditoría · App de pacientes</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <h1 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; color: var(--foreground); text-wrap: pretty;">EasyMD, más simple de navegar</h1>
+      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--muted-foreground); text-wrap: pretty;">Revisión de la app actual (Inicio, AI Concierge, Labs, Psicología, Bienestar, Farmacia) y propuesta curada. A la derecha está el prototipo navegable.</p>
+    </div>
+
+    <div style="background: var(--white); border: 1px solid var(--border); border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 16px; box-shadow: var(--shadow-sm);">
+      <h2 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 20px; color: var(--foreground);">Nueva estructura</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px;">
+        <div style="background: var(--app-bg); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+          <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 8px;"><i class="icon-house" style="font-size: 18px; color: var(--cta-blue);"></i>Inicio</span>
+          <span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Consultar ahora, pendientes del día y los 4 servicios.</span>
+        </div>
+        <div style="background: var(--app-bg); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+          <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 8px;"><i class="icon-message-circle" style="font-size: 18px; color: var(--cta-blue);"></i>Asistente</span>
+          <span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Chat con IA, respuestas rápidas y paso a médico.</span>
+        </div>
+        <div style="background: var(--app-bg); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+          <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 8px;"><i class="icon-heart-pulse" style="font-size: 18px; color: var(--cta-blue);"></i>Mi salud</span>
+          <span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Resultados, recetas y bienestar en un solo lugar.</span>
+        </div>
+        <div style="background: var(--app-bg); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+          <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 8px;"><i class="icon-circle-user-round" style="font-size: 18px; color: var(--cta-blue);"></i>Cuenta</span>
+          <span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Familia, plan, pagos, direcciones y ayuda.</span>
+        </div>
+      </div>
+      <p style="margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Flujos (consulta, pedido, agenda) se abren encima de la pestaña, con botón de regreso y sin barra inferior.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <h2 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 20px; color: var(--foreground);">Hallazgos</h2>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 18px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; gap: 8px; align-items: center;"><span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">Navegación</span><span style="font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--danger-bg); color: var(--danger-700, #a33a2a);">Alta</span></div><span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Barra inferior con 5 íconos sin texto. El ícono de edificio para Psicología no se entiende.</span></div>
+          <span style="font-size: 14px; line-height: 1.5; color: var(--foreground);">4 pestañas con etiqueta: Inicio, Asistente, Mi salud, Cuenta.</span>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 18px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; gap: 8px; align-items: center;"><span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">Acción principal</span><span style="font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--danger-bg); color: var(--danger-700, #a33a2a);">Alta</span></div><span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">No hay un acceso directo a hablar con un médico ahora, que es el servicio central.</span></div>
+          <span style="font-size: 14px; line-height: 1.5; color: var(--foreground);">Botón principal en Inicio con tiempo de espera estimado.</span>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 18px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; gap: 8px; align-items: center;"><span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">Accesibilidad</span><span style="font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--danger-bg); color: var(--danger-700, #a33a2a);">Alta</span></div><span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">El estado de cada valor de laboratorio se comunica solo con el color del punto.</span></div>
+          <span style="font-size: 14px; line-height: 1.5; color: var(--foreground);">Etiqueta de texto (Bajo, Normal, Alto) además del color.</span>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 18px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; gap: 8px; align-items: center;"><span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">Seguridad</span><span style="font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--danger-bg); color: var(--danger-700, #a33a2a);">Alta</span></div><span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">El chat de IA no aclara sus límites ni qué hacer en una emergencia.</span></div>
+          <span style="font-size: 14px; line-height: 1.5; color: var(--foreground);">Aviso discreto y fijo, más paso directo a un médico.</span>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 18px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; gap: 8px; align-items: center;"><span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">Duplicación</span><span style="font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--warning-bg); color: var(--warning-700, #92560a);">Media</span></div><span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">AI Concierge aparece como tarjeta, como tile y como pestaña. Farmacia, como tarjeta y como tile.</span></div>
+          <span style="font-size: 14px; line-height: 1.5; color: var(--foreground);">Un bloque "Para ti hoy" con pendientes; cada servicio aparece una sola vez.</span>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 18px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; gap: 8px; align-items: center;"><span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">Idioma</span><span style="font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--warning-bg); color: var(--warning-700, #92560a);">Media</span></div><span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Mezcla con inglés: "AI Concierge", "Preguntar al AI", "Explicación del AI".</span></div>
+          <span style="font-size: 14px; line-height: 1.5; color: var(--foreground);">"Asistente EasyMD" y "Pregúntale al asistente".</span>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 18px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; gap: 8px; align-items: center;"><span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">Jerarquía visual</span><span style="font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--warning-bg); color: var(--warning-700, #92560a);">Media</span></div><span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Encabezado oscuro en todas las pantallas y uno lila en Psicología: mucho peso y poca consistencia.</span></div>
+          <span style="font-size: 14px; line-height: 1.5; color: var(--foreground);">Oscuro solo en Inicio; encabezados claros en el resto.</span>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 18px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; gap: 8px; align-items: center;"><span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">Regreso</span><span style="font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--warning-bg); color: var(--warning-700, #92560a);">Media</span></div><span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Pantallas de pestaña (Labs, Bienestar) muestran flecha de regreso.</span></div>
+          <span style="font-size: 14px; line-height: 1.5; color: var(--foreground);">Pestañas sin flecha; solo los flujos tienen regreso.</span>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 18px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; gap: 8px; align-items: center;"><span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">Psicología</span><span style="font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--warning-bg); color: var(--warning-700, #92560a);">Media</span></div><span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Controles ambiguos ("Pre-agendar", "Cambiar", corazón) y tres botones "Agendar" con el mismo peso.</span></div>
+          <span style="font-size: 14px; line-height: 1.5; color: var(--foreground);">Filtro por tema, próximo horario visible y elegir hora antes de confirmar.</span>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 18px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; gap: 8px; align-items: center;"><span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">Tono clínico</span><span style="font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--app-bg); color: var(--muted-foreground);">Baja</span></div><span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Emoji en consejos sobre medicamentos; la marca no los usa en flujos clínicos.</span></div>
+          <span style="font-size: 14px; line-height: 1.5; color: var(--foreground);">Sin emoji; íconos Lucide cuando hagan falta.</span>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 18px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; gap: 8px; align-items: center;"><span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">Datos</span><span style="font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--app-bg); color: var(--muted-foreground);">Baja</span></div><span style="font-size: 14px; line-height: 1.5; color: var(--muted-foreground);">Bienestar dice "7 de 7 días" pero la gráfica muestra una sola barra.</span></div>
+          <span style="font-size: 14px; line-height: 1.5; color: var(--foreground);">Check-in de ánimo de un toque que responde con un siguiente paso.</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: var(--white); border: 1px solid var(--border); border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 14px;">
+      <h2 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 20px; color: var(--foreground);">Principios aplicados</h2>
+      <div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.5;">
+        <span style="display: flex; gap: 10px;"><i class="icon-check" style="font-size: 18px; color: var(--mint-600); margin-top: 2px;"></i>Entre 3 y 5 destinos en la barra inferior, siempre con etiqueta (guías de iOS y Material).</span>
+        <span style="display: flex; gap: 10px;"><i class="icon-check" style="font-size: 18px; color: var(--mint-600); margin-top: 2px;"></i>Una acción principal por pantalla; lo demás, secundario.</span>
+        <span style="display: flex; gap: 10px;"><i class="icon-check" style="font-size: 18px; color: var(--mint-600); margin-top: 2px;"></i>Menos opciones a la vista, decisiones más rápidas (ley de Hick).</span>
+        <span style="display: flex; gap: 10px;"><i class="icon-check" style="font-size: 18px; color: var(--mint-600); margin-top: 2px;"></i>Acciones frecuentes en la zona del pulgar y objetivos táctiles de 44 px o más.</span>
+        <span style="display: flex; gap: 10px;"><i class="icon-check" style="font-size: 18px; color: var(--mint-600); margin-top: 2px;"></i>Patrones conocidos antes que novedosos (ley de Jakob).</span>
+        <span style="display: flex; gap: 10px;"><i class="icon-check" style="font-size: 18px; color: var(--mint-600); margin-top: 2px;"></i>El estado nunca depende solo del color (WCAG 1.4.1).</span>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <div style="flex: 0 0 auto; position: sticky; top: 24px; display: flex; flex-direction: column; align-items: center; gap: 14px;">
+    <div style="width: 390px; height: 844px; border-radius: 48px; overflow: hidden; border: 10px solid var(--header-navy); box-shadow: var(--shadow-xl); background: var(--app-bg); display: flex; flex-direction: column; box-sizing: content-box;">
+
+      <div style="height: 44px; flex-shrink: 0; padding: 0 26px; display: flex; align-items: center; justify-content: space-between; background: {{ statusBg }}; color: {{ statusFg }};">
+        <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">9:41</span>
+        <span style="display: flex; gap: 6px; font-size: 16px;"><i class="icon-signal"></i><i class="icon-wifi"></i><i class="icon-battery-full"></i></span>
+      </div>
+
+      <div ref="{{ scrollRef }}" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column;">
+
+        <sc-if value="{{ isInicio }}" hint-placeholder-val="{{ true }}">
+          <div style="background: radial-gradient(120% 90% at 14% 0%, rgba(56,189,248,0.22), transparent 50%), linear-gradient(165deg, var(--header-navy-2) 0%, var(--header-navy) 100%); padding: 8px 20px 24px; border-radius: 0 0 28px 28px; display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <img src="assets/easymd-icon.png" alt="" style="width: 44px; height: 44px;">
+              <div style="flex: 1; display: flex; flex-direction: column;">
+                <span style="font-size: 14px; color: rgba(255,255,255,0.7);">Buenos días</span>
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 24px; color: var(--white);">Hola, Ana</span>
+              </div>
+              <button aria-label="Notificaciones" style="width: 44px; height: 44px; border-radius: 50%; border: none; background: rgba(255,255,255,0.12); color: var(--white); font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center;"><i class="icon-bell"></i></button>
+            </div>
+            <div style="background: var(--white); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--mint-500);"></span>
+                <span style="font-size: 14px; font-weight: 600; color: var(--mint-700);">Médicos disponibles · espera ~8 min</span>
+              </div>
+              <span style="font-family: var(--font-heading); font-weight: 700; font-size: 22px; line-height: 1.25; color: var(--foreground);">¿Te sientes mal? Habla con un médico ahora</span>
+              <x-import component-from-global-scope="EasyMDDesignSystem_91cc9c.Button" variant="accent" size="lg" full-width="{{ true }}" onClick="{{ goConsulta }}" hint-size="100%,52px">Consultar ahora</x-import>
+            </div>
+          </div>
+
+          <div style="padding: 24px 20px 8px; display: flex; flex-direction: column; gap: 12px;">
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: 18px; color: var(--foreground);">Para ti hoy</span>
+            <div style="background: var(--white); border-radius: 20px; border: 1px solid var(--border); overflow: hidden;">
+              <sc-for list="{{ pendientes }}" as="p" hint-placeholder-count="2">
+                <button onClick="{{ p.onClick }}" style="width: 100%; text-align: left; display: flex; align-items: center; gap: 14px; padding: 16px; border: none; border-top: {{ p.border }}; background: none; cursor: pointer;">
+                  <span style="width: 44px; height: 44px; border-radius: 14px; background: {{ p.bg }}; color: {{ p.fg }}; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;"><i class="icon-{{ p.icon }}"></i></span>
+                  <span style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
+                    <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px; color: var(--foreground);">{{ p.title }}</span>
+                    <span style="font-size: 14px; color: var(--muted-foreground);">{{ p.sub }}</span>
+                  </span>
+                  <i class="icon-chevron-right" style="font-size: 20px; color: var(--subtle-foreground);"></i>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="padding: 16px 20px 24px; display: flex; flex-direction: column; gap: 12px;">
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: 18px; color: var(--foreground);">Servicios</span>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <sc-for list="{{ servicios }}" as="s" hint-placeholder-count="4">
+                <button onClick="{{ s.onClick }}" style="text-align: left; padding: 16px; border-radius: 20px; background: var(--white); border: 1px solid var(--border); cursor: pointer; display: flex; flex-direction: column; gap: 12px;">
+                  <span style="width: 44px; height: 44px; border-radius: 14px; background: {{ s.bg }}; color: {{ s.fg }}; display: flex; align-items: center; justify-content: center; font-size: 22px;"><i class="icon-{{ s.icon }}"></i></span>
+                  <span style="display: flex; flex-direction: column; gap: 2px;">
+                    <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px; color: var(--foreground);">{{ s.title }}</span>
+                    <span style="font-size: 13px; color: var(--muted-foreground);">{{ s.sub }}</span>
+                  </span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isAsistente }}">
+          <div style="padding: 8px 20px 14px; display: flex; align-items: center; gap: 12px; background: var(--white); border-bottom: 1px solid var(--border);">
+            <img src="assets/easymd-icon.png" alt="" style="width: 40px; height: 40px;">
+            <div style="flex: 1; display: flex; flex-direction: column;">
+              <span style="font-family: var(--font-heading); font-weight: 700; font-size: 18px; color: var(--foreground);">Asistente EasyMD</span>
+              <span style="font-size: 13px; color: var(--mint-700); display: flex; align-items: center; gap: 6px;"><span style="width: 7px; height: 7px; border-radius: 50%; background: var(--mint-500);"></span>En línea</span>
+            </div>
+            <button onClick="{{ goConsulta }}" style="height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--white); cursor: pointer; font-family: var(--font-heading); font-weight: 700; font-size: 14px; color: var(--foreground); display: flex; align-items: center; gap: 6px;"><i class="icon-stethoscope" style="font-size: 16px; color: var(--cta-blue);"></i>Médico</button>
+          </div>
+          <div style="padding: 10px 20px; background: var(--blue-50); font-size: 12px; line-height: 1.45; color: var(--navy-800);">Te orienta, pero no reemplaza una consulta. En una emergencia llama al 911.</div>
+          <div style="flex: 1; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+            <sc-for list="{{ chat }}" as="m" hint-placeholder-count="2">
+              <div style="display: flex; justify-content: {{ m.align }};">
+                <div style="max-width: 80%; padding: 12px 16px; border-radius: {{ m.radius }}; background: {{ m.bg }}; color: {{ m.fg }}; font-size: 15px; line-height: 1.5; border: {{ m.border }}; display: flex; flex-direction: column; gap: 10px;">
+                  <span>{{ m.text }}</span>
+                  <sc-if value="{{ m.hasAction }}">
+                    <button onClick="{{ m.onAction }}" style="align-self: flex-start; height: 40px; padding: 0 16px; border-radius: 12px; border: none; background: var(--cta-blue); color: var(--white); font-family: var(--font-heading); font-weight: 700; font-size: 14px; cursor: pointer;">{{ m.actionLabel }}</button>
+                  </sc-if>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isSalud }}">
+          <div style="padding: 8px 20px 16px; display: flex; flex-direction: column; gap: 16px;">
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: 28px; letter-spacing: -0.02em; color: var(--foreground);">Mi salud</span>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; border-radius: 14px; background: var(--gray-100);">
+              <sc-for list="{{ saludTabs }}" as="t" hint-placeholder-count="3">
+                <button onClick="{{ t.onClick }}" style="height: 40px; border-radius: 10px; border: none; cursor: pointer; font-family: var(--font-heading); font-weight: 700; font-size: 14px; background: {{ t.bg }}; color: {{ t.fg }}; box-shadow: {{ t.shadow }};">{{ t.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+
+          <sc-if value="{{ isResultados }}">
+            <div style="padding: 0 20px 24px; display: flex; flex-direction: column; gap: 14px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px; color: var(--foreground);">Biometría y química</span>
+                <span style="font-size: 13px; color: var(--muted-foreground);">28 sep · GoLab</span>
+              </div>
+              <div style="display: flex; gap: 12px; padding: 16px; border-radius: 18px; background: var(--warning-bg);">
+                <i class="icon-triangle-alert" style="font-size: 20px; color: var(--warning-700, #92560a); margin-top: 2px;"></i>
+                <span style="font-size: 14px; line-height: 1.5; color: var(--foreground);"><strong>3 valores fuera de rango.</strong> La Dra. García ya los revisó y te recetó hierro.</span>
+              </div>
+              <div style="background: var(--white); border-radius: 18px; border: 1px solid var(--border); overflow: hidden;">
+                <sc-for list="{{ labs }}" as="r" hint-placeholder-count="6">
+                  <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-top: {{ r.border }};">
+                    <span style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
+                      <span style="font-size: 15px; font-weight: 500; color: var(--foreground);">{{ r.name }}</span>
+                      <span style="font-size: 12px; color: var(--muted-foreground);">Rango {{ r.range }}</span>
+                    </span>
+                    <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px; color: var(--foreground);">{{ r.value }}</span>
+                    <span style="width: 64px; text-align: center; font-size: 12px; font-weight: 600; padding: 4px 0; border-radius: 999px; background: {{ r.chipBg }}; color: {{ r.chipFg }};">{{ r.status }}</span>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="background: var(--white); border-radius: 18px; border: 1px solid var(--border); padding: 18px; display: flex; flex-direction: column; gap: 12px;">
+                <span style="display: flex; align-items: center; gap: 8px; font-family: var(--font-heading); font-weight: 700; font-size: 15px; color: var(--foreground);"><i class="icon-sparkles" style="font-size: 18px; color: var(--cta-blue);"></i>En palabras simples</span>
+                <span style="font-size: 15px; line-height: 1.55; color: var(--foreground);">Tienes poca reserva de hierro. Eso puede causar cansancio y dolor de cabeza. Con el tratamiento deberías notar más energía en unas 2 semanas.</span>
+                <button onClick="{{ askLabs }}" style="align-self: flex-start; height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid var(--cta-blue); background: none; color: var(--cta-blue); font-family: var(--font-heading); font-weight: 700; font-size: 15px; cursor: pointer; display: flex; align-items: center; gap: 8px;">Pregúntale al asistente<i class="icon-arrow-right" style="font-size: 16px;"></i></button>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isRecetas }}">
+            <div style="padding: 0 20px 24px; display: flex; flex-direction: column; gap: 14px;">
+              <div style="background: var(--white); border-radius: 20px; border: 1px solid var(--border); padding: 18px; display: flex; flex-direction: column; gap: 14px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="display: flex; flex-direction: column; gap: 2px;">
+                    <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px; color: var(--foreground);">Receta activa</span>
+                    <span style="font-size: 13px; color: var(--muted-foreground);">Dra. García · 29 sep</span>
+                  </span>
+                  <span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--mint-50); color: var(--mint-700);">Lista para pedir</span>
+                </div>
+                <sc-for list="{{ meds }}" as="md" hint-placeholder-count="2">
+                  <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="width: 40px; height: 40px; border-radius: 12px; background: var(--mint-50); color: var(--mint-600); display: flex; align-items: center; justify-content: center; font-size: 20px;"><i class="icon-pill"></i></span>
+                    <span style="flex: 1; display: flex; flex-direction: column;">
+                      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px; color: var(--foreground);">{{ md.name }}</span>
+                      <span style="font-size: 13px; color: var(--muted-foreground);">{{ md.detail }}</span>
+                    </span>
+                  </div>
+                </sc-for>
+                <x-import component-from-global-scope="EasyMDDesignSystem_91cc9c.Button" variant="accent" size="lg" full-width="{{ true }}" onClick="{{ goFarmacia }}" hint-size="100%,52px">Pedir a domicilio · $130</x-import>
+              </div>
+              <span style="font-size: 14px; color: var(--muted-foreground); text-align: center;">Recetas anteriores: 3</span>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isBienestar }}">
+            <div style="padding: 0 20px 24px; display: flex; flex-direction: column; gap: 14px;">
+              <span style="font-family: var(--font-heading); font-weight: 700; font-size: 20px; color: var(--foreground);">¿Cómo te sientes hoy?</span>
+              <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
+                <sc-for list="{{ moods }}" as="mo" hint-placeholder-count="4">
+                  <button onClick="{{ mo.onClick }}" style="padding: 14px 4px; border-radius: 18px; background: var(--white); border: {{ mo.border }}; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                    <i class="icon-{{ mo.icon }}" style="font-size: 28px; color: {{ mo.fg }};"></i>
+                    <span style="font-size: 12px; font-weight: 600; color: var(--foreground);">{{ mo.label }}</span>
+                  </button>
+                </sc-for>
+              </div>
+              <sc-if value="{{ moodLow }}">
+                <div style="background: var(--color-wellness-soft); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 12px;">
+                  <span style="font-size: 15px; line-height: 1.55; color: var(--foreground);">Gracias por contarnos, Ana. La Dra. Camila Mendoza tiene un espacio hoy a las 4:00 PM.</span>
+                  <button onClick="{{ goPsicologia }}" style="height: 48px; border-radius: 14px; border: none; background: var(--color-wellness); color: var(--white); font-family: var(--font-heading); font-weight: 700; font-size: 16px; cursor: pointer;">Ver horarios de psicología</button>
+                </div>
+              </sc-if>
+              <sc-if value="{{ moodOk }}">
+                <div style="background: var(--mint-50); border-radius: 20px; padding: 18px; font-size: 15px; line-height: 1.55; color: var(--foreground);">Qué bueno, Ana. Guardamos tu registro de hoy.</div>
+              </sc-if>
+              <div style="background: var(--white); border-radius: 20px; border: 1px solid var(--border); padding: 18px; display: flex; align-items: center; gap: 14px;">
+                <span style="width: 44px; height: 44px; border-radius: 14px; background: var(--color-wellness-soft); color: var(--color-wellness); display: flex; align-items: center; justify-content: center; font-size: 22px;"><i class="icon-calendar-check"></i></span>
+                <span style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
+                  <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px; color: var(--foreground);">5 registros esta semana</span>
+                  <span style="font-size: 13px; color: var(--muted-foreground);">Te recordamos por WhatsApp cada mañana</span>
+                </span>
+              </div>
+            </div>
+          </sc-if>
+        </sc-if>
+
+        <sc-if value="{{ isCuenta }}">
+          <div style="padding: 8px 20px 24px; display: flex; flex-direction: column; gap: 16px;">
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: 28px; letter-spacing: -0.02em; color: var(--foreground);">Cuenta</span>
+            <div style="background: var(--white); border-radius: 20px; border: 1px solid var(--border); padding: 18px; display: flex; align-items: center; gap: 14px;">
+              <span style="width: 52px; height: 52px; border-radius: 50%; background: var(--cta-blue); color: var(--white); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: 18px;">AR</span>
+              <span style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 17px; color: var(--foreground);">Ana Rodríguez</span>
+                <span style="align-self: flex-start; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: var(--mint-50); color: var(--mint-700);">Plan Familiar · Activo</span>
+              </span>
+            </div>
+            <div style="background: var(--white); border-radius: 20px; border: 1px solid var(--border); padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+              <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px; color: var(--foreground);">Mi familia</span>
+              <div style="display: flex; gap: 14px;">
+                <sc-for list="{{ familia }}" as="f" hint-placeholder-count="4">
+                  <span style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                    <span style="width: 48px; height: 48px; border-radius: 50%; background: {{ f.c }}; color: var(--white); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: 15px;">{{ f.i }}</span>
+                    <span style="font-size: 12px; color: var(--muted-foreground);">{{ f.n }}</span>
+                  </span>
+                </sc-for>
+                <span style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                  <span style="width: 48px; height: 48px; border-radius: 50%; border: 1.5px dashed var(--border-strong); color: var(--muted-foreground); display: flex; align-items: center; justify-content: center; font-size: 20px;"><i class="icon-plus"></i></span>
+                  <span style="font-size: 12px; color: var(--muted-foreground);">Agregar</span>
+                </span>
+              </div>
+            </div>
+            <div style="background: var(--white); border-radius: 20px; border: 1px solid var(--border); overflow: hidden;">
+              <sc-for list="{{ ajustes }}" as="a" hint-placeholder-count="5">
+                <div style="display: flex; align-items: center; gap: 14px; padding: 15px 16px; border-top: {{ a.border }};">
+                  <i class="icon-{{ a.icon }}" style="font-size: 20px; color: var(--muted-foreground);"></i>
+                  <span style="flex: 1; font-size: 15px; color: var(--foreground);">{{ a.label }}</span>
+                  <i class="icon-chevron-right" style="font-size: 18px; color: var(--subtle-foreground);"></i>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isConsulta }}">
+          <div style="padding: 8px 20px 12px; display: flex; align-items: center; gap: 12px;">
+            <button aria-label="Regresar" onClick="{{ goBack }}" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: var(--white); cursor: pointer; font-size: 20px; color: var(--foreground); display: flex; align-items: center; justify-content: center;"><i class="icon-arrow-left"></i></button>
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: 20px; color: var(--foreground);">Consulta médica</span>
+          </div>
+          <div style="padding: 12px 20px 24px; flex: 1; display: flex; flex-direction: column; gap: 22px;">
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <span style="font-family: var(--font-heading); font-weight: 700; font-size: 17px; color: var(--foreground);">¿Qué te pasa?</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <sc-for list="{{ motivos }}" as="mt" hint-placeholder-count="6">
+                  <button onClick="{{ mt.onClick }}" style="height: 44px; padding: 0 16px; border-radius: 999px; border: {{ mt.border }}; background: {{ mt.bg }}; color: var(--foreground); font-size: 15px; font-weight: 500; cursor: pointer;">{{ mt.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <span style="font-family: var(--font-heading); font-weight: 700; font-size: 17px; color: var(--foreground);">¿Cómo prefieres?</span>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <sc-for list="{{ modos }}" as="mx" hint-placeholder-count="2">
+                  <button onClick="{{ mx.onClick }}" style="padding: 16px; border-radius: 18px; border: {{ mx.border }}; background: var(--white); cursor: pointer; display: flex; flex-direction: column; align-items: flex-start; gap: 8px;">
+                    <i class="icon-{{ mx.icon }}" style="font-size: 24px; color: var(--cta-blue);"></i>
+                    <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px; color: var(--foreground);">{{ mx.label }}</span>
+                  </button>
+                </sc-for>
+              </div>
+            </div>
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
+              <x-import component-from-global-scope="EasyMDDesignSystem_91cc9c.Button" variant="accent" size="lg" full-width="{{ true }}" disabled="{{ noMotivo }}" onClick="{{ confirmConsulta }}" hint-size="100%,52px">Conectar con un médico</x-import>
+              <span style="font-size: 13px; text-align: center; color: var(--muted-foreground);">Incluido en tu plan · espera estimada ~8 min</span>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isFarmacia }}">
+          <div style="padding: 8px 20px 12px; display: flex; align-items: center; gap: 12px;">
+            <button aria-label="Regresar" onClick="{{ goBack }}" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: var(--white); cursor: pointer; font-size: 20px; color: var(--foreground); display: flex; align-items: center; justify-content: center;"><i class="icon-arrow-left"></i></button>
+            <span style="display: flex; flex-direction: column;">
+              <span style="font-family: var(--font-heading); font-weight: 700; font-size: 20px; color: var(--foreground);">Tu pedido</span>
+              <span style="font-size: 13px; color: var(--muted-foreground);">Receta de la Dra. García</span>
+            </span>
+          </div>
+          <div style="padding: 12px 20px 24px; flex: 1; display: flex; flex-direction: column; gap: 14px;">
+            <div style="background: var(--white); border-radius: 20px; border: 1px solid var(--border); overflow: hidden;">
+              <sc-for list="{{ meds }}" as="md" hint-placeholder-count="2">
+                <div style="display: flex; align-items: center; gap: 12px; padding: 16px; border-top: {{ md.border }};">
+                  <span style="width: 40px; height: 40px; border-radius: 12px; background: var(--mint-50); color: var(--mint-600); display: flex; align-items: center; justify-content: center; font-size: 20px;"><i class="icon-pill"></i></span>
+                  <span style="flex: 1; display: flex; flex-direction: column;">
+                    <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px; color: var(--foreground);">{{ md.name }}</span>
+                    <span style="font-size: 13px; color: var(--muted-foreground);">{{ md.detail }}</span>
+                  </span>
+                  <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px; color: var(--foreground);">{{ md.price }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="background: var(--white); border-radius: 20px; border: 1px solid var(--border); overflow: hidden;">
+              <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px;">
+                <i class="icon-map-pin" style="font-size: 20px; color: var(--muted-foreground);"></i>
+                <span style="flex: 1; display: flex; flex-direction: column;"><span style="font-size: 15px; color: var(--foreground);">Casa</span><span style="font-size: 13px; color: var(--muted-foreground);">Entrega hoy · ~50 min</span></span>
+                <span style="font-size: 14px; font-weight: 600; color: var(--cta-blue);">Cambiar</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-top: 1px solid var(--border);">
+                <i class="icon-credit-card" style="font-size: 20px; color: var(--muted-foreground);"></i>
+                <span style="flex: 1; font-size: 15px; color: var(--foreground);">Visa ···· 4821</span>
+                <span style="font-size: 14px; font-weight: 600; color: var(--cta-blue);">Cambiar</span>
+              </div>
+            </div>
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0 4px;">
+                <span style="font-size: 15px; color: var(--muted-foreground);">Total con envío</span>
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 24px; color: var(--foreground);">$130</span>
+              </div>
+              <x-import component-from-global-scope="EasyMDDesignSystem_91cc9c.Button" variant="accent" size="lg" full-width="{{ true }}" onClick="{{ confirmPedido }}" hint-size="100%,52px">Confirmar pedido</x-import>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isPsicologia }}">
+          <div style="padding: 8px 20px 12px; display: flex; align-items: center; gap: 12px;">
+            <button aria-label="Regresar" onClick="{{ goBack }}" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: var(--white); cursor: pointer; font-size: 20px; color: var(--foreground); display: flex; align-items: center; justify-content: center;"><i class="icon-arrow-left"></i></button>
+            <span style="display: flex; flex-direction: column;">
+              <span style="font-family: var(--font-heading); font-weight: 700; font-size: 20px; color: var(--foreground);">Psicología</span>
+              <span style="font-size: 13px; color: var(--muted-foreground);">Sesiones privadas por video · 50 min</span>
+            </span>
+          </div>
+          <div style="padding: 8px 20px 24px; display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; gap: 8px; overflow-x: auto;">
+              <sc-for list="{{ temas }}" as="tm" hint-placeholder-count="4">
+                <button onClick="{{ tm.onClick }}" style="flex-shrink: 0; height: 40px; padding: 0 14px; border-radius: 999px; border: {{ tm.border }}; background: {{ tm.bg }}; color: {{ tm.fg }}; font-size: 14px; font-weight: 600; cursor: pointer;">{{ tm.label }}</button>
+              </sc-for>
+            </div>
+            <sc-for list="{{ psicologos }}" as="d" hint-placeholder-count="3">
+              <div style="background: var(--white); border-radius: 20px; border: 1px solid var(--border); padding: 16px; display: flex; flex-direction: column; gap: 14px;">
+                <div style="display: flex; gap: 12px; align-items: center;">
+                  <span style="width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0; background: {{ d.c }}; color: var(--white); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: 16px;">{{ d.i }}</span>
+                  <span style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
+                    <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px; color: var(--foreground);">{{ d.name }}</span>
+                    <span style="font-size: 13px; color: var(--muted-foreground);">{{ d.spec }}</span>
+                    <span style="font-size: 13px; color: var(--muted-foreground); display: flex; align-items: center; gap: 4px;"><i class="icon-star" style="color: var(--warning); font-size: 13px;"></i>{{ d.rating }} · {{ d.price }} por sesión</span>
+                  </span>
+                </div>
+                <button onClick="{{ d.onClick }}" style="height: 48px; border-radius: 14px; border: 1.5px solid var(--color-wellness); background: var(--white); color: var(--color-wellness); font-family: var(--font-heading); font-weight: 700; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;"><i class="icon-clock" style="font-size: 16px;"></i>{{ d.next }}</button>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isAgendar }}">
+          <div style="padding: 8px 20px 12px; display: flex; align-items: center; gap: 12px;">
+            <button aria-label="Regresar" onClick="{{ goPsicologia }}" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: var(--white); cursor: pointer; font-size: 20px; color: var(--foreground); display: flex; align-items: center; justify-content: center;"><i class="icon-arrow-left"></i></button>
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: 20px; color: var(--foreground);">Elige un horario</span>
+          </div>
+          <div style="padding: 12px 20px 24px; flex: 1; display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="width: 52px; height: 52px; border-radius: 50%; background: {{ psi.c }}; color: var(--white); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: 16px;">{{ psi.i }}</span>
+              <span style="display: flex; flex-direction: column;">
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 17px; color: var(--foreground);">{{ psi.name }}</span>
+                <span style="font-size: 13px; color: var(--muted-foreground);">{{ psi.spec }} · {{ psi.price }}</span>
+              </span>
+            </div>
+            <sc-for list="{{ dias }}" as="dy" hint-placeholder-count="2">
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px; color: var(--foreground);">{{ dy.label }}</span>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+                  <sc-for list="{{ dy.slots }}" as="sl" hint-placeholder-count="3">
+                    <button onClick="{{ sl.onClick }}" style="height: 44px; border-radius: 12px; border: {{ sl.border }}; background: {{ sl.bg }}; color: {{ sl.fg }}; font-size: 15px; font-weight: 600; cursor: pointer;">{{ sl.t }}</button>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+            <div style="margin-top: auto;">
+              <button onClick="{{ confirmCita }}" disabled="{{ noSlot }}" style="width: 100%; height: 52px; border-radius: 14px; border: none; background: var(--color-wellness); opacity: {{ slotOpacity }}; color: var(--white); font-family: var(--font-heading); font-weight: 700; font-size: 16px; cursor: pointer;">{{ citaLabel }}</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isExito }}">
+          <div style="flex: 1; padding: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 16px;">
+            <span style="width: 80px; height: 80px; border-radius: 50%; background: var(--mint-50); color: var(--mint-600); display: flex; align-items: center; justify-content: center; font-size: 40px;"><i class="icon-check"></i></span>
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: 24px; color: var(--foreground); text-wrap: pretty;">{{ exito.title }}</span>
+            <span style="font-size: 15px; line-height: 1.55; color: var(--muted-foreground); max-width: 280px; text-wrap: pretty;">{{ exito.body }}</span>
+            <div style="width: 100%; margin-top: 12px;">
+              <x-import component-from-global-scope="EasyMDDesignSystem_91cc9c.Button" variant="secondary" size="lg" full-width="{{ true }}" onClick="{{ goInicio }}" hint-size="100%,52px">Volver al inicio</x-import>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <sc-if value="{{ isAsistente }}">
+        <div style="flex-shrink: 0; padding: 10px 16px 12px; background: var(--white); border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; gap: 8px; overflow-x: auto;">
+            <sc-for list="{{ sugerencias }}" as="sg" hint-placeholder-count="3">
+              <button onClick="{{ sg.onClick }}" style="flex-shrink: 0; height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--app-bg); color: var(--foreground); font-size: 13px; font-weight: 500; cursor: pointer;">{{ sg.label }}</button>
+            </sc-for>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <input value="{{ draft }}" onChange="{{ onDraft }}" onKeyDown="{{ onKey }}" placeholder="Escribe tu pregunta" style="flex: 1; height: 46px; border-radius: 999px; border: 1px solid var(--border); padding: 0 18px; font-size: 15px; font-family: inherit; background: var(--app-bg); color: var(--foreground); outline: none;">
+            <button aria-label="Enviar" onClick="{{ sendDraft }}" style="width: 46px; height: 46px; border-radius: 50%; border: none; background: var(--cta-blue); color: var(--white); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;"><i class="icon-send"></i></button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
+        <div style="flex-shrink: 0; display: grid; grid-template-columns: repeat(4, 1fr); background: var(--white); border-top: 1px solid var(--border); padding: 8px 0 22px;">
+          <sc-for list="{{ nav }}" as="n" hint-placeholder-count="4">
+            <button onClick="{{ n.onClick }}" style="min-height: 52px; border: none; background: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: {{ n.color }};">
+              <i class="icon-{{ n.icon }}" style="font-size: 22px;"></i>
+              <span style="font-size: 12px; font-weight: {{ n.weight }};">{{ n.label }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+    <span style="font-size: 13px; color: var(--muted-foreground);">Prototipo navegable · toca para explorar</span>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showAudit&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;startScreen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;inicio&quot;,&quot;asistente&quot;,&quot;salud&quot;,&quot;cuenta&quot;,&quot;consulta&quot;,&quot;farmacia&quot;,&quot;psicologia&quot;],&quot;default&quot;:&quot;inicio&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { route: null, prev: 'inicio', tab: 'resultados', mood: null, motivo: null, modo: 'video', tema: 'Todos', psiId: 0, slot: null, exito: null, draft: '',
+    chat: [{ bot: true, text: 'Hola, Ana. Tu receta de Losartán y Hierro está lista. ¿En qué te ayudo hoy?' }] };
+  scrollRef = React.createRef();
+
+  componentDidUpdate(_, ps) {
+    const el = this.scrollRef.current;
+    if (!el) return;
+    if (ps.route !== this.state.route) el.scrollTop = 0;
+    else if (ps.chat !== this.state.chat) el.scrollTop = el.scrollHeight;
+  }
+
+  route() { return this.state.route ?? this.props.startScreen ?? 'inicio'; }
+  go(r) {
+    const tabs = ['inicio', 'asistente', 'salud', 'cuenta'];
+    const cur = this.route();
+    this.setState({ route: r, prev: tabs.includes(cur) ? cur : this.state.prev });
+  }
+  send(text) {
+    const t = (text || '').trim();
+    if (!t) return;
+    const replies = {
+      '¿Cuándo tomo el hierro?': { text: 'El hierro se absorbe mejor en ayunas o con jugo de naranja. Sepáralo del Losartán al menos 2 horas. Confírmalo con la Dra. García en tu próxima revisión.' },
+      'Explícame mis resultados': { text: 'Tu hemoglobina y ferritina están bajas: tienes poca reserva de hierro. Por eso puedes sentir cansancio. Con el tratamiento deberías notar mejoría en unas 2 semanas.' },
+      'Quiero hablar con un médico': { text: 'Claro. Hay médicos disponibles con una espera de ~8 min.', action: 'Consultar ahora', to: 'consulta' },
+    };
+    const r = replies[t] || { text: 'Gracias, Ana. Le paso tu pregunta a un médico de EasyMD y te respondo aquí y por WhatsApp.' };
+    this.setState(s => ({ draft: '', chat: [...s.chat, { bot: false, text: t }, { bot: true, ...r }] }));
+  }
+
+  renderVals() {
+    const st = this.state, route = this.route();
+    const B = '1px solid var(--border)', SEL = '2px solid var(--cta-blue)';
+    const tabs = ['inicio', 'asistente', 'salud', 'cuenta'];
+    const isTab = tabs.includes(route);
+    const g = r => () => this.go(r);
+
+    const navDefs = [['inicio', 'Inicio', 'house'], ['asistente', 'Asistente', 'message-circle'], ['salud', 'Mi salud', 'heart-pulse'], ['cuenta', 'Cuenta', 'circle-user-round']];
+    const nav = navDefs.map(([id, label, icon]) => ({ label, icon, onClick: g(id), color: route === id ? 'var(--cta-blue)' : 'var(--muted-foreground)', weight: route === id ? 700 : 500 }));
+
+    const setTab = t => () => this.setState({ route: 'salud', tab: t });
+    const pendientes = [
+      { icon: 'pill', title: 'Tu receta está lista', sub: 'Losartán y Hierro · $130', bg: 'var(--mint-50)', fg: 'var(--mint-600)', onClick: g('farmacia'), border: 'none' },
+      { icon: 'flask-conical', title: 'Nuevos resultados', sub: '3 valores para revisar', bg: 'var(--warning-bg)', fg: 'var(--warning-700, #92560a)', onClick: setTab('resultados'), border: B },
+    ];
+    const servicios = [
+      { icon: 'stethoscope', title: 'Médico general', sub: 'Por video o chat', bg: 'var(--blue-50)', fg: 'var(--cta-blue)', onClick: g('consulta') },
+      { icon: 'brain', title: 'Psicología', sub: 'Sesiones de 50 min', bg: 'var(--color-wellness-soft)', fg: 'var(--color-wellness)', onClick: g('psicologia') },
+      { icon: 'pill', title: 'Farmacia', sub: 'Entrega el mismo día', bg: 'var(--mint-50)', fg: 'var(--mint-600)', onClick: g('farmacia') },
+      { icon: 'flask-conical', title: 'Laboratorios', sub: 'Resultados y citas', bg: 'var(--warning-bg)', fg: 'var(--warning-700, #92560a)', onClick: setTab('resultados') },
+    ];
+
+    const chat = st.chat.map(m => m.bot
+      ? { text: m.text, align: 'flex-start', bg: 'var(--white)', fg: 'var(--foreground)', border: B, radius: '18px 18px 18px 6px', hasAction: !!m.action, actionLabel: m.action, onAction: g(m.to) }
+      : { text: m.text, align: 'flex-end', bg: 'var(--cta-blue)', fg: 'var(--white)', border: 'none', radius: '18px 18px 6px 18px', hasAction: false });
+    const sugerencias = ['¿Cuándo tomo el hierro?', 'Explícame mis resultados', 'Quiero hablar con un médico'].map(label => ({ label, onClick: () => this.send(label) }));
+
+    const saludTabs = [['resultados', 'Resultados'], ['recetas', 'Recetas'], ['bienestar', 'Bienestar']].map(([id, label]) => {
+      const on = st.tab === id;
+      return { label, onClick: setTab(id), bg: on ? 'var(--white)' : 'transparent', fg: on ? 'var(--foreground)' : 'var(--muted-foreground)', shadow: on ? 'var(--shadow-sm)' : 'none' };
+    });
+    const chip = s => s === 'Normal' ? ['var(--mint-50)', 'var(--mint-700)'] : s === 'Bajo' ? ['var(--danger-bg)', 'var(--danger-700, #a33a2a)'] : ['var(--warning-bg)', 'var(--warning-700, #92560a)'];
+    const labs = [['Hemoglobina', '12.1 g/dL', '12.5–16.0', 'Bajo'], ['Ferritina', '9 ng/mL', '15–150', 'Bajo'], ['Colesterol', '218 mg/dL', '< 200', 'Alto'], ['Hematocrito', '37 %', '36–46', 'Normal'], ['Glucosa', '94 mg/dL', '70–99', 'Normal'], ['TSH', '2.1 mU/L', '0.4–4.0', 'Normal']]
+      .map(([name, value, range, status], i) => { const [chipBg, chipFg] = chip(status); return { name, value, range, status, chipBg, chipFg, border: i ? B : 'none' }; });
+    const meds = [{ name: 'Losartán 50 mg', detail: '30 tabletas · 1 al día', price: '$85' }, { name: 'Hierro 60 mg', detail: '30 cápsulas · 1 al día', price: '$45' }].map((m, i) => ({ ...m, border: i ? B : 'none' }));
+    const moods = [['bien', 'Bien', 'smile', 'var(--mint-600)'], ['regular', 'Regular', 'meh', 'var(--warning)'], ['ansioso', 'Ansioso/a', 'annoyed', 'var(--warning-700, #92560a)'], ['mal', 'Mal', 'frown', 'var(--danger)']]
+      .map(([id, label, icon, fg]) => ({ label, icon, fg, border: st.mood === id ? SEL : B, onClick: () => this.setState({ mood: id }) }));
+
+    const familia = [{ i: 'AR', n: 'Ana', c: 'var(--cta-blue)' }, { i: 'LR', n: 'Luis', c: 'var(--mint-600)' }, { i: 'SR', n: 'Sofía', c: 'var(--color-wellness)' }, { i: 'MR', n: 'Mateo', c: 'var(--warning-700, #92560a)' }];
+    const ajustes = [['credit-card', 'Métodos de pago'], ['map-pin', 'Direcciones'], ['bell', 'Avisos por WhatsApp'], ['shield-check', 'Privacidad'], ['circle-help', 'Ayuda']].map(([icon, label], i) => ({ icon, label, border: i ? B : 'none' }));
+
+    const motivos = ['Gripe o tos', 'Fiebre', 'Dolor de estómago', 'Dolor de cabeza', 'Alergia', 'Otro'].map(label => ({ label, onClick: () => this.setState({ motivo: label }), border: st.motivo === label ? SEL : B, bg: st.motivo === label ? 'var(--blue-50)' : 'var(--white)' }));
+    const modos = [['video', 'Videollamada', 'video'], ['chat', 'Chat', 'message-square']].map(([id, label, icon]) => ({ label, icon, border: st.modo === id ? SEL : B, onClick: () => this.setState({ modo: id }) }));
+
+    const allPsi = [
+      { i: 'CM', c: 'var(--color-wellness)', name: 'Dra. Camila Mendoza', spec: 'Ansiedad y depresión', rating: '4.9', price: '$450', next: 'Hoy, 4:00 PM', tema: 'Ansiedad' },
+      { i: 'AH', c: 'var(--cta-blue)', name: 'Dr. Andrés Herrera', spec: 'Niños y adolescentes', rating: '4.8', price: '$520', next: 'Mañana, 9:00 AM', tema: 'Familia' },
+      { i: 'VR', c: 'var(--serene-500)', name: 'Dra. Valeria Ruiz', spec: 'Terapia de pareja', rating: '4.7', price: '$580', next: 'Hoy, 6:00 PM', tema: 'Pareja' },
+    ];
+    const temas = ['Todos', 'Ansiedad', 'Pareja', 'Familia'].map(label => { const on = st.tema === label; return { label, onClick: () => this.setState({ tema: label }), border: on ? '1.5px solid var(--color-wellness)' : B, bg: on ? 'var(--color-wellness-soft)' : 'var(--white)', fg: on ? 'var(--color-wellness)' : 'var(--foreground)' }; });
+    const psicologos = allPsi.map((d, idx) => ({ ...d, idx })).filter(d => st.tema === 'Todos' || d.tema === st.tema)
+      .map(d => ({ ...d, next: 'Próximo: ' + d.next, onClick: () => this.setState({ route: 'agendar', psiId: d.idx, slot: null }) }));
+    const psi = allPsi[st.psiId];
+    const slot = (day, t) => { const k = day + ' ' + t, on = st.slot === k; return { t, onClick: () => this.setState({ slot: k }), border: on ? '1.5px solid var(--color-wellness)' : B, bg: on ? 'var(--color-wellness)' : 'var(--white)', fg: on ? 'var(--white)' : 'var(--foreground)' }; };
+    const dias = [{ label: 'Hoy', slots: ['4:00 PM', '5:00 PM', '7:00 PM'].map(t => slot('hoy', t)) }, { label: 'Mañana', slots: ['9:00 AM', '11:00 AM', '6:00 PM'].map(t => slot('mañana', t)) }];
+
+    const ex = {
+      consulta: { title: 'Te estamos conectando', body: 'Un médico se une en ~8 min. Te avisaremos aquí y por WhatsApp.' },
+      pedido: { title: 'Pedido confirmado', body: 'Tu Losartán y Hierro llegan hoy en ~50 min. Te avisamos cuando salga el repartidor.' },
+      cita: { title: 'Cita agendada', body: (psi ? psi.name : '') + ', ' + (st.slot || '') + '. Te enviamos el enlace de la sesión por WhatsApp.' },
+    }[st.exito] || { title: '', body: '' };
+
+    return {
+      showAudit: this.props.showAudit ?? true,
+      isInicio: route === 'inicio', isAsistente: route === 'asistente', isSalud: route === 'salud', isCuenta: route === 'cuenta',
+      isConsulta: route === 'consulta', isFarmacia: route === 'farmacia', isPsicologia: route === 'psicologia', isAgendar: route === 'agendar', isExito: route === 'exito',
+      isResultados: st.tab === 'resultados', isRecetas: st.tab === 'recetas', isBienestar: st.tab === 'bienestar',
+      showNav: isTab, statusBg: route === 'inicio' ? 'var(--header-navy-2)' : (route === 'asistente' ? 'var(--white)' : 'var(--app-bg)'), statusFg: route === 'inicio' ? 'var(--white)' : 'var(--foreground)',
+      scrollRef: this.scrollRef, nav, pendientes, servicios, chat, sugerencias, saludTabs, labs, meds, moods, familia, ajustes, motivos, modos, temas, psicologos, psi, dias,
+      moodLow: st.mood === 'ansioso' || st.mood === 'mal', moodOk: st.mood === 'bien' || st.mood === 'regular',
+      noMotivo: !st.motivo, noSlot: !st.slot, slotOpacity: st.slot ? 1 : 0.5, citaLabel: st.slot ? 'Confirmar cita · ' + psi.price : 'Elige un horario',
+      exito: ex, draft: st.draft,
+      goInicio: () => this.setState({ route: 'inicio', motivo: null, slot: null }), goBack: () => this.go(st.prev || 'inicio'),
+      goConsulta: g('consulta'), goFarmacia: g('farmacia'), goPsicologia: g('psicologia'),
+      askLabs: () => { this.go('asistente'); this.send('Explícame mis resultados'); },
+      confirmConsulta: () => this.setState({ route: 'exito', exito: 'consulta' }),
+      confirmPedido: () => this.setState({ route: 'exito', exito: 'pedido' }),
+      confirmCita: () => st.slot && this.setState({ route: 'exito', exito: 'cita' }),
+      onDraft: e => this.setState({ draft: e.target.value }), onKey: e => { if (e.key === 'Enter') this.send(st.draft); }, sendDraft: () => this.send(st.draft),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

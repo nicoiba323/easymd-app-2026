@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/tokens/base.css">
+  <link rel="stylesheet" href="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static@0.460.0/font/lucide.css">
+  <script src="_ds/easymd-design-system-91cc9cbd-e815-4a4f-8772-c505cda9d160/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--app-bg); color: var(--foreground); }
+    a { color: var(--cta-blue); } a:hover { color: var(--cta-blue-hover); }
+  </style>
+</helmet>
+
+<div style="max-width: 1000px; margin: 0 auto; padding: 48px 24px 80px; display: flex; flex-direction: column; gap: 48px;">
+
+  <header style="display: flex; flex-direction: column; gap: 16px;">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <img src="assets/easymd-icon.png" alt="EasyMD" style="width: 40px; height: 40px;">
+      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-foreground);">Auditoría UX · Perspectiva del paciente · Oct 2026</span>
+    </div>
+    <h1 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; text-wrap: pretty;">La app debe decir en 10 segundos qué tienes incluido y cómo recibir atención</h1>
+    <p style="margin: 0; max-width: 720px; font-size: 17px; line-height: 1.6; color: var(--muted-foreground); text-wrap: pretty;">Evaluación de la app de pacientes EasyMD contra la promesa de easymd.co. Cubre onboarding, inicio, consulta 24/7, psicología, beneficios, laboratorio, farmacia, familiares, plan, pagos y soporte.</p>
+    <div style="display: flex; gap: 12px; padding: 16px 18px; border-radius: 16px; background: var(--warning-bg); max-width: 760px;">
+      <i class="icon-info" style="font-size: 20px; color: var(--warning-700, #92560a); margin-top: 2px;"></i>
+      <span style="font-size: 14px; line-height: 1.55;"><strong>Alcance.</strong> El enlace de Lovable no fue accesible desde aquí. La app se evaluó con la recreación de la interfaz publicada que existe en el sistema de diseño (Inicio, AI Concierge, Labs, Psicología, Bienestar, Farmacia). Las áreas marcadas como <strong>No visible</strong> no aparecen en esa versión: se reportan como vacíos y deben validarse con la app real. La página de planes de la web carga los precios de forma dinámica; se usaron los de la página de inicio.</span>
+    </div>
+  </header>
+
+  <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+    <div style="background: var(--white); border: 1px solid var(--border); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 32px; color: var(--danger);">5</span>
+      <span style="font-size: 14px; line-height: 1.5;">Problemas P0 que bloquean la atención o afectan la confianza</span>
+    </div>
+    <div style="background: var(--white); border: 1px solid var(--border); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 32px; color: var(--foreground);">0</span>
+      <span style="font-size: 14px; line-height: 1.5;">Toques directos a "médico ahora" desde Inicio. La web promete atención en menos de 5 min.</span>
+    </div>
+    <div style="background: var(--white); border: 1px solid var(--border); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 32px; color: var(--foreground);">5 de 11</span>
+      <span style="font-size: 14px; line-height: 1.5;">Áreas evaluadas sin pantalla visible: onboarding, beneficios, plan, pagos y soporte</span>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 18px;">
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--cta-blue);">01</span>
+      <h2 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 28px; letter-spacing: -0.02em;">Mapa de flujos actuales</h2>
+    </div>
+    <div style="background: var(--white); border: 1px solid var(--border); border-radius: 22px; overflow: hidden;">
+      <sc-for list="{{ flujos }}" as="f" hint-placeholder-count="11">
+        <div style="display: grid; grid-template-columns: minmax(140px, 180px) minmax(0, 1fr); gap: 16px; padding: 16px 20px; border-top: {{ f.border }}; align-items: start;">
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">{{ f.area }}</span>
+            <span style="align-self: flex-start; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: {{ f.chipBg }}; color: {{ f.chipFg }};">{{ f.estado }}</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;">
+              <sc-for list="{{ f.pasos }}" as="p" hint-placeholder-count="3">
+                <span style="display: flex; align-items: center; gap: 6px;">
+                  <span style="font-size: 13px; padding: 5px 10px; border-radius: 10px; background: {{ p.bg }}; color: {{ p.fg }}; border: {{ p.bd }};">{{ p.t }}</span>
+                  <sc-if value="{{ p.arrow }}"><i class="icon-arrow-right" style="font-size: 14px; color: var(--subtle-foreground);"></i></sc-if>
+                </span>
+              </sc-for>
+            </div>
+            <span style="font-size: 13px; line-height: 1.5; color: var(--muted-foreground);">{{ f.nota }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--muted-foreground);">
+      <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 14px; height: 14px; border-radius: 4px; background: var(--app-bg);"></span>Paso existente</span>
+      <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 14px; height: 14px; border-radius: 4px; background: var(--danger-bg); border: 1px dashed var(--danger);"></span>Paso faltante o sin destino</span>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 18px;">
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--cta-blue);">02</span>
+      <h2 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 28px; letter-spacing: -0.02em;">Consistencia web y app</h2>
+      <p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--muted-foreground); max-width: 720px;">Lo que el paciente lee en easymd.co antes de descargar, frente a lo que encuentra al abrir la app.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <sc-for list="{{ consistencia }}" as="c" hint-placeholder-count="9">
+        <div style="background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 16px 18px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <span style="font-family: var(--font-heading); font-weight: 700; font-size: 15px;">{{ c.tema }}</span>
+              <span style="font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: {{ c.chipBg }}; color: {{ c.chipFg }};">{{ c.riesgo }}</span>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-size: 12px; font-weight: 600; color: var(--muted-foreground);">La web dice</span>
+            <span style="font-size: 14px; line-height: 1.5;">{{ c.web }}</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-size: 12px; font-weight: 600; color: var(--muted-foreground);">La app muestra</span>
+            <span style="font-size: 14px; line-height: 1.5;">{{ c.app }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 18px;">
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--cta-blue);">03</span>
+      <h2 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 28px; letter-spacing: -0.02em;">Problemas priorizados y recomendaciones</h2>
+      <p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--muted-foreground); max-width: 720px;">P0 bloquea la atención o rompe la confianza. P1 genera fricción o confusión frecuente. P2 es pulido visual o de accesibilidad.</p>
+    </div>
+    <sc-for list="{{ grupos }}" as="g" hint-placeholder-count="3">
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-family: var(--font-heading); font-weight: 700; font-size: 14px; padding: 4px 12px; border-radius: 999px; background: {{ g.chipBg }}; color: {{ g.chipFg }};">{{ g.nivel }}</span>
+          <span style="font-size: 14px; color: var(--muted-foreground);">{{ g.desc }}</span>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-radius: 20px; overflow: hidden;">
+          <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
+            <div style="padding: 18px 20px; border-top: {{ it.border }}; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <div style="display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap;">
+                  <span style="font-family: var(--font-heading); font-weight: 700; font-size: 13px; color: var(--muted-foreground);">{{ it.n }}</span>
+                  <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">{{ it.titulo }}</span>
+                </div>
+                <span style="font-size: 12px; font-weight: 600; color: var(--cta-blue);">{{ it.area }}</span>
+                <span style="font-size: 14px; line-height: 1.55; color: var(--muted-foreground);">{{ it.problema }}</span>
+              </div>
+              <div style="display: flex; gap: 10px; padding: 14px; border-radius: 14px; background: var(--app-bg);">
+                <i class="icon-arrow-right" style="font-size: 16px; color: var(--mint-600); margin-top: 3px;"></i>
+                <span style="font-size: 14px; line-height: 1.55;">{{ it.rec }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 18px;">
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--cta-blue);">04</span>
+      <h2 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 28px; letter-spacing: -0.02em;">Arquitectura de navegación propuesta</h2>
+      <p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--muted-foreground); max-width: 720px;">Cuatro pestañas con etiqueta. Los flujos (consulta, pedido, agenda, pago) se abren encima, con regreso y sin barra inferior. Un selector "¿Para quién es?" aparece al inicio de cada flujo de atención.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+        <div style="background: var(--white); border: 1px solid var(--border); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="width: 40px; height: 40px; border-radius: 12px; background: var(--blue-50); color: var(--cta-blue); display: flex; align-items: center; justify-content: center; font-size: 20px;"><i class="icon-{{ t.icon }}"></i></span>
+            <span style="display: flex; flex-direction: column;">
+              <span style="font-family: var(--font-heading); font-weight: 700; font-size: 17px;">{{ t.nombre }}</span>
+              <span style="font-size: 12px; color: var(--muted-foreground);">{{ t.trabajo }}</span>
+            </span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <sc-for list="{{ t.items }}" as="x" hint-placeholder-count="4">
+              <span style="display: flex; gap: 8px; font-size: 14px; line-height: 1.45;"><span style="width: 6px; height: 6px; border-radius: 50%; background: var(--cta-blue); margin-top: 7px; flex-shrink: 0;"></span>{{ x }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="background: var(--white); border: 1px solid var(--border); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 17px;">Consulta médica 24/7 en dos toques</span>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
+        <span style="font-size: 14px; padding: 8px 12px; border-radius: 12px; background: var(--blue-50); color: var(--navy-800);">Inicio: "Habla con un médico ahora · espera ~3 min"</span>
+        <i class="icon-arrow-right" style="font-size: 16px; color: var(--subtle-foreground);"></i>
+        <span style="font-size: 14px; padding: 8px 12px; border-radius: 12px; background: var(--app-bg);">¿Para quién? + motivo (opcional) + video o chat</span>
+        <i class="icon-arrow-right" style="font-size: 16px; color: var(--subtle-foreground);"></i>
+        <span style="font-size: 14px; padding: 8px 12px; border-radius: 12px; background: var(--app-bg);">Sala de espera con tiempo real</span>
+        <i class="icon-arrow-right" style="font-size: 16px; color: var(--subtle-foreground);"></i>
+        <span style="font-size: 14px; padding: 8px 12px; border-radius: 12px; background: var(--app-bg);">Consulta</span>
+        <i class="icon-arrow-right" style="font-size: 16px; color: var(--subtle-foreground);"></i>
+        <span style="font-size: 14px; padding: 8px 12px; border-radius: 12px; background: var(--mint-50); color: var(--mint-700);">Resumen, receta y "Pedir a domicilio"</span>
+      </div>
+      <span style="font-size: 13px; color: var(--muted-foreground);">Siempre visible en el flujo: "Incluido en tu plan" y "¿Es una emergencia? Llama al número local".</span>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 18px;">
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--cta-blue);">05</span>
+      <h2 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 28px; letter-spacing: -0.02em;">Plan de rediseño</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px;">
+      <sc-for list="{{ fases }}" as="fz" hint-placeholder-count="3">
+        <div style="background: var(--white); border: 1px solid var(--border); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-size: 12px; font-weight: 600; color: var(--cta-blue);">{{ fz.cuando }}</span>
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: 18px;">{{ fz.nombre }}</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <sc-for list="{{ fz.items }}" as="x" hint-placeholder-count="4">
+              <span style="display: flex; gap: 8px; font-size: 14px; line-height: 1.45;"><i class="icon-check" style="font-size: 15px; color: var(--mint-600); margin-top: 2px;"></i>{{ x }}</span>
+            </sc-for>
+          </div>
+          <div style="margin-top: auto; padding: 12px 14px; border-radius: 12px; background: var(--app-bg); display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 12px; font-weight: 600; color: var(--muted-foreground);">Cómo medimos</span>
+            <span style="font-size: 14px; line-height: 1.45;">{{ fz.metrica }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="background: var(--white); border: 1px solid var(--border); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 10px;">
+      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 17px;">Principios de diseño</span>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px 20px; font-size: 14px; line-height: 1.5;">
+        <span>Una acción principal por pantalla, en la zona del pulgar.</span>
+        <span>Precio con moneda y etiqueta: Incluido, Con descuento o Costo adicional.</span>
+        <span>Texto claro para alguien de 60 años: cuerpo de 16 px, contraste AA, sin jerga ni inglés.</span>
+        <span>El estado nunca depende solo del color; objetivos táctiles de 44 px o más.</span>
+        <span>Encabezado oscuro solo en Inicio; resto en fondo claro con tarjetas blancas.</span>
+        <span>Soporte humano a un toque en cada error y en cada flujo de pago.</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 14px;">
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <span style="font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--cta-blue);">06</span>
+      <h2 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 28px; letter-spacing: -0.02em;">Para validar antes de implementar</h2>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.55;">
+      <span style="display: flex; gap: 10px;"><i class="icon-circle-help" style="font-size: 18px; color: var(--cta-blue); margin-top: 2px;"></i>Acceso a la app real (o capturas) de onboarding, plan, pagos, familiares y soporte.</span>
+      <span style="display: flex; gap: 10px;"><i class="icon-circle-help" style="font-size: 18px; color: var(--cta-blue); margin-top: 2px;"></i>Qué incluye cada plan (Básico, Plus, Premium) y qué es costo adicional: psicología, farmacia, laboratorio, especialistas.</span>
+      <span style="display: flex; gap: 10px;"><i class="icon-circle-help" style="font-size: 18px; color: var(--cta-blue); margin-top: 2px;"></i>Moneda por país y si los precios de la app ($450, $130) son moneda local o datos de ejemplo.</span>
+      <span style="display: flex; gap: 10px;"><i class="icon-circle-help" style="font-size: 18px; color: var(--cta-blue); margin-top: 2px;"></i>Tiempo real de espera para médico general, para mostrar un dato honesto y alineado con la web.</span>
+      <span style="display: flex; gap: 10px;"><i class="icon-circle-help" style="font-size: 18px; color: var(--cta-blue); margin-top: 2px;"></i>Dominio oficial: easymd.co redirige a easymd.app, y "Crear cuenta" abre consultas.easymd.app.</span>
+    </div>
+  </section>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const B = '1px solid var(--border)';
+    const est = { ok: ['Observado', 'var(--mint-50)', 'var(--mint-700)'], part: ['Parcial', 'var(--warning-bg)', 'var(--warning-700, #92560a)'], no: ['No visible', 'var(--danger-bg)', 'var(--danger-700, #a33a2a)'] };
+    const step = (t, i, arr) => { const miss = t.startsWith('?'); const tx = miss ? t.slice(1) : t;
+      return { t: tx, arrow: i < arr.length - 1, bg: miss ? 'var(--danger-bg)' : 'var(--app-bg)', fg: miss ? 'var(--danger-700, #a33a2a)' : 'var(--foreground)', bd: miss ? '1px dashed var(--danger)' : '1px solid transparent' }; };
+    const flujos = [
+      ['Onboarding', 'no', ['Web: Crear cuenta', 'consultas.easymd.app', '?Registro en app', '?Activar plan o código de empresa'], 'Dos puertas de entrada (web y tiendas) sin un camino único. No se observa registro, verificación ni activación del plan.'],
+      ['Inicio', 'ok', ['Encabezado oscuro', 'Tarjeta AI Concierge', 'Confirmar · $130', 'Tiles: Concierge, Farmacia, Labs, Bienestar', 'Mi familia'], 'Prioriza un pedido de farmacia. AI Concierge aparece tres veces (tarjeta, tile y pestaña).'],
+      ['Consulta 24/7', 'no', ['Inicio', 'AI Concierge (chat)', '?Hablar con médico', '?Sala de espera', '?Videoconsulta'], 'La promesa central de la web no tiene entrada directa en la app.'],
+      ['Psicología', 'part', ['Bienestar: ¿Cómo te sientes?', 'Sí, agendar', 'Lista de psicólogos', 'Agendar', '?Elegir horario', '?Confirmación'], 'Sin elección de horario ni confirmación. Controles "Pre-agendar" y "Cambiar" sin función clara.'],
+      ['Beneficios', 'no', ['?Qué incluye mi plan', '?Descuentos en farmacia y labs'], 'La web vende "todo incluido" y descuentos; la app no los explica.'],
+      ['Laboratorio', 'part', ['Pestaña Labs', 'Tabla de resultados', 'Preguntar al AI', '?Pedir examen', '?Elegir laboratorio'], 'Solo lectura. El pendiente "Agendar lab seguimiento" no lleva a una agenda.'],
+      ['Farmacia', 'part', ['Inicio: Confirmar', 'Tu pedido', 'Confirmar pedido · $130', '?Confirmación de entrega'], 'Dirección y pago ocultos ("guardados · 1 toque"). No hay forma de revisarlos ni de ver el descuento del plan.'],
+      ['Familiares', 'part', ['Inicio: 4 miembros', 'Ver todos', '?Perfil de cada miembro', '?Atender a un familiar'], '"Ver todos" no tiene destino. No se puede pedir consulta para un hijo o un padre.'],
+      ['Plan', 'no', ['?Mi plan', '?Cambiar o cancelar'], 'La web dice "Cancela cuando quieras desde la app".'],
+      ['Pagos', 'no', ['?Métodos de pago', '?Historial y facturas'], 'Se cobra sin mostrar el método ni el comprobante.'],
+      ['Soporte', 'no', ['?Ayuda', '?WhatsApp', '?Urgencias'], 'La web publica WhatsApp de soporte; la app no ofrece ayuda humana ni guía de urgencias.'],
+    ].map(([area, e, pasos, nota], i) => ({ area, estado: est[e][0], chipBg: est[e][1], chipFg: est[e][2], pasos: pasos.map(step), nota, border: i ? B : 'none' }));
+
+    const r = { alto: ['Alto', 'var(--danger-bg)', 'var(--danger-700, #a33a2a)'], medio: ['Medio', 'var(--warning-bg)', 'var(--warning-700, #92560a)'], bajo: ['Bajo', 'var(--app-bg)', 'var(--muted-foreground)'] };
+    const consistencia = [
+      ['Tiempo de atención', 'alto', '"Conecta con un médico en menos de 5 minutos, 24/7." Promedio <5 min.', 'No hay acceso directo a médico ni tiempo de espera visible.'],
+      ['Precios y moneda', 'alto', 'Planes en $9.95, $14.95 y $25 al mes, "todo incluido para tu familia".', 'Psicología a $450–$580 por sesión y farmacia $130, sin moneda ni relación con el plan.'],
+      ['Qué incluye el plan', 'alto', 'Básico, Plus y Premium; "Sin contratos, sin letra chica".', 'No aparece el plan activo, sus beneficios ni sus límites.'],
+      ['Farmacia y laboratorio', 'medio', '"Recetas digitales y descuentos en farmacias y exámenes."', 'Precios sin descuento visible; laboratorio solo muestra resultados.'],
+      ['Psicología', 'medio', '"Sesiones de psicología cuando tú las necesites." En 10 min ya en sesión.', 'Solo agenda futura; sin opción de sesión inmediata ni horario.'],
+      ['Especialistas', 'medio', 'Red de médicos, psicólogos y nutricionistas certificados.', 'No hay especialistas ni nutrición en la app.'],
+      ['Urgencias y soporte', 'alto', 'FAQ "¿Cómo se atienden las urgencias?" y WhatsApp de contacto.', 'Sin guía de urgencias ni soporte humano.'],
+      ['Nombre y lenguaje', 'bajo', 'Logo "easyMD"; todo en español.', '"easyMD · AI Concierge", "Preguntar al AI". La guía de marca pide "EasyMD" y español.'],
+      ['Emoji', 'bajo', '«7 de 7 días · Racha activa 🔥»', 'Emoji en consejos de medicamentos. La marca no los usa en flujos clínicos.'],
+    ].map(([tema, k, web, app]) => ({ tema, riesgo: r[k][0], chipBg: r[k][1], chipFg: r[k][2], web, app }));
+
+    let n = 0;
+    const mk = arr => arr.map(([titulo, area, problema, rec], i) => ({ n: String(++n).padStart(2, '0'), titulo, area, problema, rec, border: i ? B : 'none' }));
+    const grupos = [
+      { nivel: 'P0', desc: 'Bloquea la atención o rompe la confianza', chipBg: 'var(--danger-bg)', chipFg: 'var(--danger-700, #a33a2a)', items: mk([
+        ['No hay forma directa de ver a un médico', 'Inicio · Consulta 24/7', 'El servicio principal depende del chat de IA. Un paciente con fiebre a las 2 a.m. no encuentra un botón claro.', 'Botón principal en Inicio: "Habla con un médico ahora" con espera real. Flujo de dos toques: ¿para quién? y conectar. Motivo opcional.'],
+        ['No sé qué tengo incluido', 'Beneficios · Plan', 'No hay pantalla de plan ni beneficios. El paciente no sabe si la consulta, la psicología o el envío tienen costo.', 'Resumen del plan en Inicio ("Plan Plus · 4 cubiertos · Ver beneficios") y pantalla "Mi plan" con cada beneficio: incluido, usado, disponible.'],
+        ['Precios sin contexto', 'Psicología · Farmacia', 'Montos de $450–$580 y $130 sin moneda ni relación con planes de $9.95–$25 al mes. Parece un cobro sorpresa.', 'Moneda explícita y etiqueta en cada precio: "Incluido en tu plan", "20 % de descuento" o "Costo adicional". Mostrar el ahorro.'],
+        ['Sin urgencias ni ayuda humana', 'Soporte', 'No hay guía para emergencias ni contacto con una persona. El chat de IA no aclara sus límites.', 'Enlace fijo "¿Es una emergencia?" con número local por país. "Ayuda por WhatsApp" en Cuenta, en errores y en pagos.'],
+        ['Onboarding fragmentado', 'Onboarding', '"Crear cuenta" en la web abre consultas.easymd.app; las tiendas llevan a la app nativa. Dos caminos, dos experiencias.', 'Un solo camino a la app. Tres pasos: teléfono y código, nombre y fecha de nacimiento, activar plan o código de empresa. Terminar en "Tu plan está activo" con la primera acción.'],
+      ]) },
+      { nivel: 'P1', desc: 'Fricción o confusión frecuente', chipBg: 'var(--warning-bg)', chipFg: 'var(--warning-700, #92560a)', items: mk([
+        ['Navegación solo con íconos', 'Navegación', 'Cinco íconos sin texto; el edificio para Psicología no se entiende. Labs y Bienestar como pestañas, Farmacia no.', 'Cuatro pestañas con etiqueta: Inicio, Asistente, Mi salud, Cuenta.'],
+        ['AI Concierge repetido y en inglés', 'Inicio · Asistente', 'Aparece como tarjeta, tile y pestaña. "AI Concierge", "Preguntar al AI".', '"Asistente EasyMD" una sola vez como pestaña. Los pendientes viven en "Para ti hoy".'],
+        ['Agendar sin horario', 'Psicología', 'Tres botones "Agendar" con el mismo peso, sin elegir hora ni confirmar. "Pre-agendar" y "Cambiar" confunden.', 'Filtro por tema, botón con el próximo horario, pantalla de horarios y confirmación con enlace por WhatsApp. Opción "Sesión ahora" si hay disponibilidad.'],
+        ['Familia sin uso real', 'Familiares', '"4 miembros · Todo al día" sin destino. No se puede atender a un familiar.', 'Selector "¿Para quién es?" al iniciar consulta, psicología, laboratorio o farmacia. Perfil por miembro en Cuenta.'],
+        ['Laboratorio solo de lectura', 'Laboratorio', 'No se puede pedir un examen ni ver dónde hacerlo. El estado se lee solo por color.', 'Acciones "Pedir examen" y "Agendar toma". Etiqueta de texto Bajo, Normal o Alto, y resumen en lenguaje simple.'],
+        ['Pago a ciegas', 'Farmacia · Pagos', 'Dirección y método ocultos. Sin comprobante.', 'Mostrar dirección y tarjeta antes de confirmar, con "Cambiar". Comprobante y seguimiento del pedido. Historial en Cuenta.'],
+        ['Servicios prometidos ausentes', 'Especialistas', 'La web ofrece especialistas y nutrición; la app no.', 'Entrada "Especialistas" en Servicios, o retirar la promesa de la web hasta lanzarlo.'],
+      ]) },
+      { nivel: 'P2', desc: 'Pulido visual y accesibilidad', chipBg: 'var(--app-bg)', chipFg: 'var(--muted-foreground)', items: mk([
+        ['Encabezados pesados e inconsistentes', 'Visual', 'Encabezado oscuro en todas las pantallas y uno lila solo en Psicología.', 'Oscuro solo en Inicio. Resto con encabezado claro y título grande.'],
+        ['Contraste y tamaños bajos', 'Accesibilidad', 'Texto blanco al 55–60 % sobre navy y etiquetas de 12–13 px en mayúsculas.', 'Contraste AA (4.5:1), cuerpo de 16 px, mayúsculas solo en etiquetas cortas. Etiquetas accesibles en botones con ícono.'],
+        ['Flecha de regreso en pestañas', 'Navegación', 'Labs y Bienestar muestran "atrás" aunque son pestañas.', 'Regreso solo en flujos; las pestañas no lo llevan.'],
+        ['Datos y tono', 'Contenido', '"7 de 7 días" con una sola barra. Emoji en consejos de medicamentos.', 'Datos coherentes con la gráfica. Sin emoji en flujos clínicos; usar íconos.'],
+      ]) },
+    ];
+
+    const tabs = [
+      { nombre: 'Inicio', icon: 'house', trabajo: 'Recibir atención ya', items: ['Habla con un médico ahora, con espera real', 'Para ti hoy: máximo 3 pendientes', 'Servicios: Médico, Psicología, Farmacia, Laboratorio, Especialistas', 'Tu plan en una línea, con "Ver beneficios"', '¿Es una emergencia?'] },
+      { nombre: 'Asistente', icon: 'message-circle', trabajo: 'Resolver dudas', items: ['Chat con IA en español', 'Respuestas sugeridas', 'Paso directo a médico', 'Aviso de límites y urgencias'] },
+      { nombre: 'Mi salud', icon: 'heart-pulse', trabajo: 'Ver mi historial', items: ['Selector de miembro de la familia', 'Consultas y recetas', 'Resultados de laboratorio', 'Bienestar y check-in diario'] },
+      { nombre: 'Cuenta', icon: 'circle-user-round', trabajo: 'Administrar', items: ['Mi plan y beneficios', 'Familia', 'Pagos y comprobantes', 'Direcciones', 'Ayuda por WhatsApp y preguntas frecuentes', 'Privacidad'] },
+    ];
+    const fases = [
+      { cuando: 'Semanas 1–2', nombre: 'Atención y confianza', items: ['Consulta 24/7 en dos toques desde Inicio', 'Mi plan y beneficios', 'Etiquetas de precio: incluido, descuento o adicional', 'Urgencias y ayuda por WhatsApp'], metrica: 'Usuario nuevo inicia una consulta en menos de 10 s; 8 de 10 explican qué incluye su plan.' },
+      { cuando: 'Semanas 3–4', nombre: 'Navegación y flujos', items: ['Cuatro pestañas con etiqueta', 'Psicología con horarios y confirmación', 'Farmacia con dirección, pago y seguimiento', 'Laboratorio con pedir examen', 'Selector "¿Para quién es?"'], metrica: 'Tareas clave completadas sin ayuda en pruebas con 5 usuarios, incluido un adulto mayor.' },
+      { cuando: 'Semanas 5–6', nombre: 'Onboarding y pulido', items: ['Onboarding de 3 pasos con código de empresa', 'Accesibilidad AA y textos de 16 px', 'Copy alineado con la web', 'Estados vacíos y mensajes de error empáticos'], metrica: 'Registro completo en menos de 2 min; menos contactos a soporte por dudas de cobro.' },
+    ];
+    return { flujos, consistencia, grupos, tabs, fases };
+  }
+}
+
+</script>
+</body>
+</html>
