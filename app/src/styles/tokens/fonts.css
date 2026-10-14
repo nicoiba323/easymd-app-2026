@@ -1,0 +1,6 @@
+/* EasyMD — Webfonts
+   Headings: Plus Jakarta Sans (600/700). Body: Inter (400/500/600).
+   Loaded from Google Fonts. Consumers may self-host by swapping these
+   @import lines for local @font-face rules. */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
